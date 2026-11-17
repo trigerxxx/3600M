@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+<defs>
+<radialGradient id="fire" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ffb866" stop-opacity=".8"/><stop offset=".6" stop-color="#c8662a" stop-opacity=".22"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+<radialGradient id="lamp" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ffd27a" stop-opacity=".75"/><stop offset="1" stop-color="#ffd27a" stop-opacity="0"/></radialGradient>
+<radialGradient id="vig" cx="50%" cy="50%" r="75%"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".75"/></radialGradient>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9fb8d6"/><stop offset="1" stop-color="#dfe8f3"/></linearGradient>
+</defs>
+<g id="room">
+<rect width="1280" height="720" fill="#0a0e18"/>
+<polygon points="0,0 1280,0 1040,110 240,110" fill="#4d3a2c"/>
+<polygon points="240,110 1040,110 1040,520 240,520" fill="#5c4636"/>
+<polygon points="0,0 240,110 240,520 0,720" fill="#4d3a2c"/>
+<polygon points="1280,0 1040,110 1040,520 1280,720" fill="#4d3a2c"/>
+<polygon points="0,720 240,520 1040,520 1280,720" fill="#7a5c44"/>
+<g stroke="#00000033" stroke-width="3"><line x1="240" y1="220" x2="1040" y2="220"/><line x1="240" y1="320" x2="1040" y2="320"/><line x1="240" y1="420" x2="1040" y2="420"/></g>
+<circle cx="330" cy="500" r="260" fill="url(#fire)"/>
+<rect x="270" y="380" width="120" height="130" rx="10" fill="#15110f"/><rect x="296" y="425" width="68" height="50" rx="5" fill="#ff9a3a"/><rect x="318" y="110" width="26" height="270" fill="#15110f"/>
+<rect x="225" y="180" width="90" height="120" fill="#7a2d22"/><path d="M238 240 q32 -38 64 0 q-32 38 -64 0" fill="none" stroke="#e9c37a" stroke-width="4"/>
+<rect x="560" y="175" width="165" height="335" fill="#44536f" stroke="#9fc4ee" stroke-width="5"/>
+<circle cx="642" cy="285" r="11" fill="#05080f" stroke="#c9d8ee" stroke-width="4"/><rect x="694" y="345" width="13" height="38" rx="5" fill="#c9d8ee"/>
+<g fill="#eaf4ff" opacity=".85"><polygon points="560,175 592,175 572,206"/><polygon points="640,175 690,175 665,200"/><polygon points="560,510 600,510 572,482"/></g>
+<rect x="560" y="506" width="165" height="7" fill="#d92b20" opacity=".8"/>
+<circle cx="642" cy="150" r="90" fill="url(#lamp)"/><rect x="628" y="130" width="28" height="32" rx="5" fill="#ffd27a"/>
+<rect x="830" y="200" width="150" height="125" fill="#a9c4e4" stroke="#6b5140" stroke-width="7"/><line x1="905" y1="200" x2="905" y2="325" stroke="#6b5140" stroke-width="6"/>
+<rect x="780" y="420" width="220" height="18" fill="#5b4332"/><rect x="795" y="438" width="13" height="72" fill="#4a3628"/><rect x="972" y="438" width="13" height="72" fill="#4a3628"/><rect x="845" y="402" width="78" height="18" fill="#efe6cf" transform="rotate(-4 884 411)"/>
+</g><rect width="1280" height="720" fill="#000" fill-opacity=".55"/>
+<g id="journal">
+<rect x="200" y="80" width="880" height="560" rx="18" fill="#2a1f18"/>
+<rect x="222" y="100" width="836" height="520" rx="8" fill="#efe6cf"/>
+<g stroke="#c9d6e6" stroke-width="1"><line x1="222" y1="170" x2="1058" y2="170"/><line x1="222" y1="222" x2="1058" y2="222"/><line x1="222" y1="274" x2="1058" y2="274"/><line x1="222" y1="326" x2="1058" y2="326"/><line x1="222" y1="378" x2="1058" y2="378"/><line x1="222" y1="430" x2="1058" y2="430"/><line x1="222" y1="482" x2="1058" y2="482"/><line x1="222" y1="534" x2="1058" y2="534"/><line x1="222" y1="586" x2="1058" y2="586"/></g>
+<line x1="640" y1="100" x2="640" y2="620" stroke="#b9ad90" stroke-width="3"/><line x1="236" y1="100" x2="236" y2="620" stroke="#e0a09a" stroke-width="1.5"/>
+<text x="252" y="148" font-family="Georgia, serif" font-style="italic" font-weight="700" font-size="28" fill="#2b3a5c">Журнал · День 2</text>
+<circle cx="1036" cy="126" r="20" fill="#8c7a5a"/><text x="1036" y="133" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="20" fill="#fff">✕</text>
+<circle cx="252" cy="204" r="8" fill="#1f4fa0"/><text x="272" y="210" font-family="Georgia, serif" font-style="italic" font-size="21" fill="#1f4fa0">Д2  Температура: −18°</text><circle cx="252" cy="256" r="8" fill="#1c7a45"/><text x="272" y="262" font-family="Georgia, serif" font-style="italic" font-size="21" fill="#1c7a45">Д2  Ветер: С-З</text><circle cx="252" cy="308" r="8" fill="#1f4fa0"/><text x="272" y="314" font-family="Georgia, serif" font-style="italic" font-size="21" fill="#0f2550">Д2  Давление: 642</text><ellipse cx="400" cy="307" rx="160" ry="22" fill="none" stroke="#d92b20" stroke-width="2.5"/><text x="272" y="340" font-family="Georgia, serif" font-style="italic" font-size="14" fill="#d92b20">чернила темнее — подделка?</text><circle cx="252" cy="360" r="8" fill="#b0641c"/><text x="272" y="366" font-family="Georgia, serif" font-style="italic" font-size="21" fill="#b0641c">Д2  Снег: 60 см</text><circle cx="252" cy="412" r="8" fill="#7a2d8a"/><text x="272" y="418" font-family="Georgia, serif" font-style="italic" font-size="21" fill="#7a2d8a">Д1  Температура: −12°</text>
+<text x="664" y="148" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#2b3a5c">Новая запись</text>
+<g font-family="Inter, Arial, sans-serif" font-size="16" font-weight="600">
+<rect x="664" y="172" width="180" height="48" rx="12" fill="#2b3a5c"/><text x="754" y="202" text-anchor="middle" fill="#fff">Температура</text>
+<rect x="854" y="172" width="180" height="48" rx="12" fill="#d9ceb0"/><text x="944" y="202" text-anchor="middle" fill="#2b3a5c">Ветер</text>
+<rect x="664" y="230" width="180" height="48" rx="12" fill="#d9ceb0"/><text x="754" y="260" text-anchor="middle" fill="#2b3a5c">Давление</text>
+<rect x="854" y="230" width="180" height="48" rx="12" fill="#d9ceb0"/><text x="944" y="260" text-anchor="middle" fill="#2b3a5c">Снег</text></g>
+<rect x="664" y="300" width="370" height="64" rx="12" fill="#d9ceb0"/>
+<rect x="676" y="312" width="56" height="40" rx="10" fill="#c4b893"/><text x="704" y="340" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="26" fill="#2b3a5c">−</text>
+<text x="849" y="344" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="800" fill="#2b3a5c">−21°</text>
+<rect x="966" y="312" width="56" height="40" rx="10" fill="#c4b893"/><text x="994" y="340" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="26" fill="#2b3a5c">+</text>
+<rect x="664" y="384" width="370" height="64" rx="14" fill="#b0641c"/><text x="849" y="424" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800" fill="#fff">ЗАПИСАТЬ</text>
+<g font-family="Inter, Arial, sans-serif" font-size="14" fill="#7a705a"><text x="664" y="486">Чернила:</text>
+<circle cx="740" cy="481" r="6" fill="#1f4fa0"/><text x="752" y="486">Айбек</text><circle cx="812" cy="481" r="6" fill="#1c7a45"/><text x="824" y="486">Нурай</text><circle cx="884" cy="481" r="6" fill="#b0641c"/><text x="896" y="486">ты</text><circle cx="928" cy="481" r="6" fill="#7a2d8a"/><text x="940" y="486">Тимур</text></g>
+<text x="664" y="580" font-family="Inter, Arial, sans-serif" font-style="italic" font-size="15" fill="#7a705a">Пиши то, что видишь. Даже если страшно.</text>
+</g>
+</svg>

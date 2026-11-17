@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+<defs>
+<radialGradient id="fire" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ffb866" stop-opacity=".8"/><stop offset=".6" stop-color="#c8662a" stop-opacity=".22"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+<radialGradient id="lamp" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ffd27a" stop-opacity=".75"/><stop offset="1" stop-color="#ffd27a" stop-opacity="0"/></radialGradient>
+<radialGradient id="vig" cx="50%" cy="50%" r="75%"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".75"/></radialGradient>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9fb8d6"/><stop offset="1" stop-color="#dfe8f3"/></linearGradient>
+</defs>
+<g id="room">
+<rect width="1280" height="720" fill="#0a0e18"/>
+<polygon points="0,0 1280,0 1040,110 240,110" fill="#4d3a2c"/>
+<polygon points="240,110 1040,110 1040,520 240,520" fill="#5c4636"/>
+<polygon points="0,0 240,110 240,520 0,720" fill="#4d3a2c"/>
+<polygon points="1280,0 1040,110 1040,520 1280,720" fill="#4d3a2c"/>
+<polygon points="0,720 240,520 1040,520 1280,720" fill="#7a5c44"/>
+<g stroke="#00000033" stroke-width="3"><line x1="240" y1="220" x2="1040" y2="220"/><line x1="240" y1="320" x2="1040" y2="320"/><line x1="240" y1="420" x2="1040" y2="420"/></g>
+<circle cx="330" cy="500" r="260" fill="url(#fire)"/>
+<rect x="270" y="380" width="120" height="130" rx="10" fill="#15110f"/><rect x="296" y="425" width="68" height="50" rx="5" fill="#ff9a3a"/><rect x="318" y="110" width="26" height="270" fill="#15110f"/>
+<rect x="225" y="180" width="90" height="120" fill="#7a2d22"/><path d="M238 240 q32 -38 64 0 q-32 38 -64 0" fill="none" stroke="#e9c37a" stroke-width="4"/>
+<rect x="560" y="175" width="165" height="335" fill="#44536f" stroke="#9fc4ee" stroke-width="5"/>
+<circle cx="642" cy="285" r="11" fill="#05080f" stroke="#c9d8ee" stroke-width="4"/><rect x="694" y="345" width="13" height="38" rx="5" fill="#c9d8ee"/>
+<g fill="#eaf4ff" opacity=".85"><polygon points="560,175 592,175 572,206"/><polygon points="640,175 690,175 665,200"/><polygon points="560,510 600,510 572,482"/></g>
+<rect x="560" y="506" width="165" height="7" fill="#d92b20" opacity=".8"/>
+<circle cx="642" cy="150" r="90" fill="url(#lamp)"/><rect x="628" y="130" width="28" height="32" rx="5" fill="#ffd27a"/>
+<rect x="830" y="200" width="150" height="125" fill="#a9c4e4" stroke="#6b5140" stroke-width="7"/><line x1="905" y1="200" x2="905" y2="325" stroke="#6b5140" stroke-width="6"/>
+<rect x="780" y="420" width="220" height="18" fill="#5b4332"/><rect x="795" y="438" width="13" height="72" fill="#4a3628"/><rect x="972" y="438" width="13" height="72" fill="#4a3628"/><rect x="845" y="402" width="78" height="18" fill="#efe6cf" transform="rotate(-4 884 411)"/>
+</g><rect width="1280" height="720" fill="#05080f" fill-opacity=".7"/><g id="topbar">
+<rect x="24" y="22" width="300" height="56" rx="12" fill="#000" fill-opacity=".55"/>
+<text x="44" y="59" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#ffb866">ГОЛОСОВАНИЕ · 0:11</text>
+<rect x="956" y="22" width="300" height="56" rx="12" fill="#000" fill-opacity=".55"/>
+<text x="976" y="44" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#9fc4ee">ТЕПЛО</text>
+<text x="1236" y="44" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#9fc4ee">уголь: 5</text>
+<rect x="976" y="53" width="260" height="12" rx="6" fill="#26324b"/><rect x="976" y="53" width="139" height="12" rx="6" fill="#ff9a3a"/>
+</g>
+<text x="640" y="150" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800" fill="#ffb866">Кого запереть в кладовке?</text>
+<text x="640" y="190" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" fill="#9fc4ee">Нужно больше половины голосов. Роль запертого увидят все.</text>
+<g id="clues"><rect x="330" y="225" width="620" height="120" rx="14" fill="#000" fill-opacity=".45"/><text x="352" y="256" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700" fill="#ffb866">УЛИКИ ЭТОЙ НОЧИ</text>
+<text x="352" y="284" font-family="Inter, Arial, sans-serif" font-size="16" fill="#dfe6f2">• запись «Давление: 642» — чернила темнее обычного</text>
+<text x="352" y="310" font-family="Inter, Arial, sans-serif" font-size="16" fill="#dfe6f2">• утром следы на снегу ведут от сарая с генератором</text>
+<text x="352" y="336" font-family="Inter, Arial, sans-serif" font-size="16" fill="#dfe6f2">• ложный стук был от имени Айбека, а Айбек стоял у печи</text></g>
+<g id="vote-Айбек"><rect x="170" y="390" width="176" height="200" rx="18" fill="#141c2e" stroke="#26324b" stroke-width="2"/>
+<circle cx="258" cy="450" r="34" fill="#f1c9a0"/><rect x="226" y="412" width="64" height="18" rx="8" fill="#1f4fa0"/>
+<text x="258" y="515" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700" fill="#fff">Айбек</text>
+<circle cx="200" cy="545" r="7" fill="#1f4fa0"/><text x="214" y="550" font-family="Inter, Arial, sans-serif" font-size="14" fill="#9fc4ee">✓ писал</text>
+</g><g id="vote-Нурай"><rect x="366" y="390" width="176" height="200" rx="18" fill="#141c2e" stroke="#26324b" stroke-width="2"/>
+<circle cx="454" cy="450" r="34" fill="#f1c9a0"/><rect x="422" y="412" width="64" height="18" rx="8" fill="#1c7a45"/>
+<text x="454" y="515" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700" fill="#fff">Нурай</text>
+<circle cx="396" cy="545" r="7" fill="#1c7a45"/><text x="410" y="550" font-family="Inter, Arial, sans-serif" font-size="14" fill="#9fc4ee">✓ писал</text>
+</g><g id="vote-Тимур"><rect x="562" y="390" width="176" height="200" rx="18" fill="#3a1414" stroke="#d92b20" stroke-width="4"/>
+<circle cx="650" cy="450" r="34" fill="#f1c9a0"/><rect x="618" y="412" width="64" height="18" rx="8" fill="#7a2d8a"/>
+<text x="650" y="515" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700" fill="#fff">Тимур</text>
+<circle cx="592" cy="545" r="7" fill="#7a2d8a"/><text x="606" y="550" font-family="Inter, Arial, sans-serif" font-size="14" fill="#ff8a7a">✗ не писал</text>
+<text x="650" y="578" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700" fill="#ff8a7a">голосов: 3</text></g><g id="vote-Бекзат"><rect x="758" y="390" width="176" height="200" rx="18" fill="#141c2e" stroke="#26324b" stroke-width="2"/>
+<circle cx="846" cy="450" r="34" fill="#f1c9a0"/><rect x="814" y="412" width="64" height="18" rx="8" fill="#a02832"/>
+<text x="846" y="515" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700" fill="#fff">Бекзат</text>
+<circle cx="788" cy="545" r="7" fill="#a02832"/><text x="802" y="550" font-family="Inter, Arial, sans-serif" font-size="14" fill="#9fc4ee">✓ писал</text>
+</g><g id="vote-ты"><rect x="954" y="390" width="176" height="200" rx="18" fill="#141c2e" stroke="#26324b" stroke-width="2"/>
+<circle cx="1042" cy="450" r="34" fill="#f1c9a0"/><rect x="1010" y="412" width="64" height="18" rx="8" fill="#b0641c"/>
+<text x="1042" y="515" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700" fill="#fff">ты</text>
+<circle cx="984" cy="545" r="7" fill="#b0641c"/><text x="998" y="550" font-family="Inter, Arial, sans-serif" font-size="14" fill="#9fc4ee">✓ писал</text>
+</g>
+<g id="skip"><rect x="540" y="620" width="200" height="56" rx="14" fill="#3c465a"/><text x="640" y="655" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="700" fill="#fff">ПРОПУСТИТЬ</text></g>
+</svg>

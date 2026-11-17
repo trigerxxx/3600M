@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+<defs>
+<radialGradient id="fire" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ffb866" stop-opacity=".8"/><stop offset=".6" stop-color="#c8662a" stop-opacity=".22"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+<radialGradient id="lamp" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ffd27a" stop-opacity=".75"/><stop offset="1" stop-color="#ffd27a" stop-opacity="0"/></radialGradient>
+<radialGradient id="vig" cx="50%" cy="50%" r="75%"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".75"/></radialGradient>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9fb8d6"/><stop offset="1" stop-color="#dfe8f3"/></linearGradient>
+</defs>
+<rect width="1280" height="720" fill="#070b14"/>
+<circle cx="320" cy="360" r="330" fill="#22355c" opacity=".35"/><circle cx="960" cy="360" r="330" fill="#5a1410" opacity=".35"/>
+<g id="card-meteorologist">
+<rect x="120" y="110" width="400" height="500" rx="24" fill="#141c2e" stroke="#9fc4ee" stroke-width="3"/>
+<text x="320" y="170" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="#8fa0bd" letter-spacing="3">ТВОЯ РОЛЬ</text>
+<circle cx="320" cy="300" r="78" fill="#22355c"/><rect x="292" y="300" width="56" height="70" rx="10" fill="#2f6aa8"/><circle cx="320" cy="275" r="30" fill="#f1c9a0"/><rect x="290" y="244" width="60" height="18" rx="8" fill="#b83a2a"/>
+<text x="320" y="440" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="800" fill="#fff">МЕТЕОРОЛОГ</text>
+<text x="320" y="485" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" fill="#9fc4ee">Один из вас — не человек.</text>
+<text x="320" y="512" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" fill="#9fc4ee">Не открывай ему дверь.</text>
+</g>
+<g id="card-guest">
+<rect x="760" y="110" width="400" height="500" rx="24" fill="#16090b" stroke="#d92b20" stroke-width="3"/>
+<text x="960" y="170" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" fill="#c08080" letter-spacing="3">ТВОЯ РОЛЬ</text>
+<circle cx="960" cy="300" r="78" fill="#2a0e0e"/><rect x="932" y="298" width="56" height="74" rx="10" fill="#05080f"/><circle cx="960" cy="272" r="30" fill="#05080f"/><circle cx="950" cy="270" r="4" fill="#bfe0ff"/><circle cx="970" cy="270" r="4" fill="#bfe0ff"/>
+<text x="960" y="440" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="800" fill="#ff6a5a">ГОСТЬ</text>
+<text x="960" y="485" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" fill="#f0b8b0">Обмани их. Заставь открыть дверь.</text>
+<text x="960" y="512" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" fill="#f0b8b0">Браслет выдаёт тебя: будь осторожен.</text>
+</g>
+<text x="640" y="670" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#5d6a82">Показывается 8 секунд в начале раунда. Игрок видит только свою карточку.</text>
+</svg>
