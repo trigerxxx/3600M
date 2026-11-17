@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fcpxml>
+<fcpxml version="1.9">
+  <resources>
+    <format id="r1" name="FFVideoFormat720p24" frameDuration="1/24s" width="1280" height="720"/>
+        <asset id="r2" name="Крушение" src="file:./crash.mp4" start="0s" duration="106/24s" hasVideo="1" format="r1"/>
+    <asset id="r3" name="Рация" src="file:./radio.png" start="0s" duration="0s" hasVideo="1" format="r1"/>
+    <asset id="r4" name="Титул 33 DAYS" src="file:./title.png" start="0s" duration="0s" hasVideo="1" format="r1"/>
+    <asset id="r9" name="Звук" src="file:./sound.wav" start="0s" duration="293/24s" hasAudio="1" audioSources="1" audioChannels="2" audioRate="48000"/>
+  </resources>
+  <library>
+    <event name="33 Days трейлер">
+      <project name="Тизер крушения">
+        <sequence format="r1" duration="293/24s" tcStart="0s" tcFormat="NDF">
+          <spine>
+                        <asset-clip ref="r2" name="Крушение" offset="0/24s" duration="106/24s" start="0s"><asset-clip ref="r9" lane="-1" name="Звук" offset="0s" duration="293/24s" start="0s"/></asset-clip>
+            <gap name="Пауза" offset="106/24s" duration="10/24s" start="0s"/>
+            <video ref="r3" name="Рация" offset="116/24s" duration="77/24s" start="0s"></video>
+            <video ref="r4" name="Титул 33 DAYS" offset="192/24s" duration="101/24s" start="0s"></video>
+          </spine>
+        </sequence>
+      </project>
+    </event>
+  </library>
+</fcpxml>
