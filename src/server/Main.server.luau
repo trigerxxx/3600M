@@ -10,6 +10,7 @@ local Shared = ReplicatedStorage:WaitForChild("Shared")
 local Config = require(Shared.Config)
 local Round = require(Shared.Round)
 local Map = require(script.Parent.Map)
+local Look = require(script.Parent.Look)
 
 -- ---------- сеть ----------
 local net = Instance.new("Folder")
@@ -26,8 +27,16 @@ eventRemote.Parent = net
 net.Parent = ReplicatedStorage
 
 local built = Map.build()
-local atmosphere = Instance.new("Atmosphere")
-atmosphere.Parent = Lighting
+Look.setup()
+local snow = Look.snow(built.model, Vector3.new(0, 0, 0))
+local currentLook = ""
+
+local function setLook(name: string)
+	if name ~= currentLook then
+		currentLook = name
+		Look.apply(name)
+	end
+end
 
 -- ---------- состояние сервера ----------
 local mode: "lobby" | "round" = "lobby"
@@ -91,16 +100,20 @@ end
 
 local function applyWorld(s: Round.State)
 	local isNight = s.phase == "night"
-	Lighting.ClockTime = if isNight or s.phase == "discuss" or s.phase == "vote" then 0.5 else 13
-	Lighting.Brightness = if isNight then 0.5 else 2
-	Lighting.Ambient = if isNight then Color3.fromRGB(20, 25, 40) else Color3.fromRGB(110, 115, 130)
+	local nightLook = isNight or s.phase == "discuss" or s.phase == "vote"
+	if s.blizzardUntil > s.clock then
+		setLook("blizzard")
+		snow.Rate = 900
+	else
+		setLook(if nightLook then "night" else "day")
+		snow.Rate = if isNight then 320 else 160
+	end
 	local dark = s.lightsOffUntil > s.clock
 	for _, light in built.lights do
 		light.Enabled = not dark
 	end
 	built.lamp.Enabled = s.lampOutSince == nil and not dark
 	built.eastLamp.Material = if built.lamp.Enabled then Enum.Material.Neon else Enum.Material.SmoothPlastic
-	atmosphere.Density = if s.blizzardUntil > s.clock then 0.75 else (if isNight then 0.4 else 0.25)
 	Map.setDoorClosed(built, isNight)
 	built.prompts.nightMeasure.Enabled = isNight
 	built.prompts.knock.Enabled = isNight
@@ -158,7 +171,7 @@ local function endRound()
 	round = nil
 	mode = "lobby"
 	countdown = Config.LobbyCountdown
-	Lighting.ClockTime = 13
+	setLook("day")
 	Map.setDoorClosed(built, false)
 	for _, plr in Players:GetPlayers() do
 		teleport(plr, built.spots.lobby)

@@ -41,7 +41,7 @@ end
 
 -- Стена по оси X (вдоль) или Z, с проёмом [gapFrom, gapTo] по длине
 local function wall(parent: Instance, name: string, from: Vector3, to: Vector3, gap: { number }?)
-	local color = Color3.fromRGB(80, 60, 45)
+	local color = Color3.fromRGB(150, 88, 50)
 	local alongX = math.abs(to.X - from.X) > math.abs(to.Z - from.Z)
 	local a = if alongX then math.min(from.X, to.X) else math.min(from.Z, to.Z)
 	local b = if alongX then math.max(from.X, to.X) else math.max(from.Z, to.Z)
@@ -55,7 +55,7 @@ local function wall(parent: Instance, name: string, from: Vector3, to: Vector3, 
 			local mid = (seg[1] + seg[2]) / 2
 			local size = if alongX then Vector3.new(len, WALL_H, 1) else Vector3.new(1, WALL_H, len)
 			local pos = if alongX then Vector3.new(mid, WALL_H / 2, from.Z) else Vector3.new(from.X, WALL_H / 2, mid)
-			part(parent, name .. i, size, pos, color)
+			part(parent, name .. i, size, pos, color, { Material = Enum.Material.WoodPlanks })
 		end
 	end
 end
@@ -89,7 +89,7 @@ function Map.build(): Built
 	part(m, "Lobby", Vector3.new(60, 2, 60), Vector3.new(0, 30, 200), P.blue)
 
 	-- главная комната: x -20..20, z -15..15
-	part(m, "FloorMain", Vector3.new(40, 1, 30), Vector3.new(0, 0.5, 0), P.wood)
+	part(m, "FloorMain", Vector3.new(40, 1, 30), Vector3.new(0, 0.5, 0), P.wood, { Material = Enum.Material.WoodPlanks })
 	part(m, "Roof", Vector3.new(56, 1, 32), Vector3.new(7, WALL_H + 0.5, 0), Color3.fromRGB(60, 45, 35))
 	wall(m, "WallSouth", Vector3.new(-20, 0, -15), Vector3.new(20, 0, -15), { -3, 3 })
 	wall(m, "WallNorth", Vector3.new(-20, 0, 15), Vector3.new(20, 0, 15), { -8, -2 })

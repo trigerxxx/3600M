@@ -24,6 +24,8 @@
 | [docs/07-tasks-balance.md](docs/07-tasks-balance.md) | Задания на станции, тепло, дверь, способности Гостя, баланс раунда |
 | [docs/08-code.md](docs/08-code.md) | Код прототипа: как устроен и как запустить |
 | [art/ui/](art/ui/) | Макеты экранов для Figma (SVG) и картинки для просмотра |
+| [docs/09-art-direction.md](docs/09-art-direction.md) | Арт-дирекшн: «сочная» картинка, палитра, настройки света Roblox |
+| [art/keyart-3600.png](art/keyart-3600.png) | Ключевой арт игры |
 | [art/3600-sketch.png](art/3600-sketch.png) | Эскиз стиля: иконка, ночная сцена, журнал, план станции |
 
-![Эскиз стиля](art/3600-sketch.png)
+![Ключевой арт](art/keyart-3600.png)
