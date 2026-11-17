@@ -10,7 +10,8 @@
 | 1 | **3600: Don't Open the Door** (режим «Один из нас стучит» + сюжет «40 дней») | Этап 1: подготовка |
 | 2 | **Whiteout: Hide Your Heat** (прятки с тепловизором) | Идея |
 | 3 | **33 Days: Lost in the Amazon** (выживание после крушения) | Идея, `docs/10-amazon.md` |
-| 4+ | Быстрые игры на общем движке | Список в `docs/06-plan.md` |
+| 4 | **Catch a Cloud** (симулятор: ловить и разводить облака) | Идея, `docs/11-catch-a-cloud.md` |
+| 5+ | Быстрые игры на общем движке | Список в `docs/06-plan.md` |
 
 ## Документы
 
@@ -21,6 +22,8 @@
 | [docs/03-story-40-days.md](docs/03-story-40-days.md) | Сюжетный режим: механики, 40 дней по дням, концовки |
 | [docs/04-design-ideas.md](docs/04-design-ideas.md) | Идеи геймдизайна и план удержания игроков |
 | [docs/05-whiteout.md](docs/05-whiteout.md) | Вторая игра: прятки с тепловизором |
+| [docs/10-amazon.md](docs/10-amazon.md) | Игра 3: выживание в Амазонии |
+| [docs/11-catch-a-cloud.md](docs/11-catch-a-cloud.md) | Игра 4: симулятор облаков |
 | [docs/06-plan.md](docs/06-plan.md) | Этапы, сроки, бюджет, цель «10 игр до осени 2027», запуск |
 | [docs/07-tasks-balance.md](docs/07-tasks-balance.md) | Задания на станции, тепло, дверь, способности Гостя, баланс раунда |
 | [docs/08-code.md](docs/08-code.md) | Код прототипа: как устроен и как запустить |
