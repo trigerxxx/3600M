@@ -26,6 +26,7 @@
 | [docs/10-amazon.md](docs/10-amazon.md) | Игра 3: выживание в Амазонии |
 | [docs/11-catch-a-cloud.md](docs/11-catch-a-cloud.md) | Игра 4: симулятор облаков |
 | [docs/12-everest.md](docs/12-everest.md) | Игра 5: Эверест |
+| [docs/13-retention.md](docs/13-retention.md) | Удержание: что меряет Roblox, что встроено в код, воронки, эксперименты |
 | [docs/06-plan.md](docs/06-plan.md) | Этапы, сроки, бюджет, цель «10 игр до осени 2027», запуск |
 | [docs/07-tasks-balance.md](docs/07-tasks-balance.md) | Задания на станции, тепло, дверь, способности Гостя, баланс раунда |
 | [docs/08-code.md](docs/08-code.md) | Код прототипа: как устроен и как запустить |

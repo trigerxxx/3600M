@@ -11,6 +11,8 @@ local Config = require(Shared.Config)
 local Round = require(Shared.Round)
 local Map = require(script.Parent.Map)
 local Look = require(script.Parent.Look)
+local Progress = require(script.Parent.Progress)
+local Analytics = require(script.Parent.Analytics)
 
 -- ---------- сеть ----------
 local net = Instance.new("Folder")
@@ -72,6 +74,7 @@ local function sendLobby()
 			players = #Players:GetPlayers(),
 			need = Config.MinPlayers,
 			countdown = if #Players:GetPlayers() >= Config.MinPlayers then math.ceil(countdown) else nil,
+			progress = Progress.summary(plr),
 		})
 	end
 end
@@ -129,8 +132,53 @@ local function applyWorld(s: Round.State)
 	end
 end
 
+local function isNewbie(plr: Player): boolean
+	local d = Progress.get(plr)
+	return d ~= nil and d.rounds < 3
+end
+
+-- Задания дня и замеры по событиям раунда
+local function trackEvent(s: Round.State, e)
+	local t = e.type
+	if t == "journal" and e.id then
+		local plr = playerById(e.id)
+		if plr then
+			Progress.event(plr, "journal", 1)
+			if e.correct then
+				Progress.event(plr, "correct", 1)
+			end
+			if isNewbie(plr) then
+				Analytics.onboarding(plr, "Первая запись в журнале")
+			end
+		end
+	elseif t == "coal" then
+		local plr = playerById(e.id)
+		if plr then
+			Progress.event(plr, "coal", 1)
+		end
+	elseif t == "letIn" and e.by and e.by ~= e.id then
+		local plr = playerById(e.by)
+		if plr then
+			Progress.event(plr, "letIn", 1)
+		end
+	elseif t == "dragged" then
+		local plr = playerById(e.by)
+		if plr then
+			Progress.event(plr, "drag", 1)
+		end
+	elseif t == "locked" and e.role == "guest" and e.voters then
+		for _, voter in e.voters do
+			local plr = playerById(voter)
+			if plr then
+				Progress.event(plr, "catch", 1)
+			end
+		end
+	end
+end
+
 local function sendEvents(s: Round.State)
 	for _, e in s.events do
+		trackEvent(s, e)
 		if e.type == "nightTask" then
 			local plr = playerById(e.id)
 			if plr then
@@ -170,7 +218,7 @@ end
 local function endRound()
 	round = nil
 	mode = "lobby"
-	countdown = Config.LobbyCountdown
+	countdown = Config.NextRoundCountdown
 	setLook("day")
 	Map.setDoorClosed(built, false)
 	for _, plr in Players:GetPlayers() do
@@ -255,6 +303,12 @@ end)
 
 -- ---------- игроки ----------
 Players.PlayerAdded:Connect(function(plr)
+	task.spawn(function()
+		Progress.load(plr)
+		if isNewbie(plr) then
+			Analytics.onboarding(plr, "Зашёл в игру")
+		end
+	end)
 	plr.CharacterAdded:Connect(function()
 		task.wait(0.2)
 		local s = round
@@ -262,17 +316,97 @@ Players.PlayerAdded:Connect(function(plr)
 			placeAll(s)
 		else
 			teleport(plr, built.spots.lobby)
+			if isNewbie(plr) then
+				Analytics.onboarding(plr, "Увидел лобби")
+			end
 		end
 	end)
 end)
 
 Players.PlayerRemoving:Connect(function(plr)
 	lastAction[plr.UserId] = nil
+	local phase = if round and round.players[plr.UserId] then round.phase else "лобби"
+	Analytics.left(plr, phase)
+	Progress.release(plr)
 	local s = round
 	if s then
 		Round.removePlayer(s, plr.UserId)
 	end
 end)
+
+-- ---------- удержание: замеры фаз и итоги раунда ----------
+local function onPhase(s: Round.State)
+	for id, p in s.players do
+		local plr = playerById(id)
+		if plr then
+			local d = Progress.get(plr)
+			local rounds = if d then d.rounds else 0
+			if s.phase == "intro" then
+				Analytics.roundStart(plr)
+				if rounds == 0 then
+					Analytics.onboarding(plr, "Начался первый раунд")
+					Analytics.onboarding(plr, "Увидел свою роль")
+				elseif rounds == 1 then
+					Analytics.onboarding(plr, "Начал второй раунд")
+				end
+			elseif s.phase == "day" and s.night == 1 then
+				Analytics.roundStep(plr, "День 1")
+			elseif s.phase == "night" then
+				if s.night == 1 then
+					Analytics.roundStep(plr, "Ночь 1")
+					if rounds == 0 then
+						Analytics.onboarding(plr, "Первая ночь")
+					end
+				elseif s.night == 3 then
+					Analytics.roundStep(plr, "Ночь 3")
+				end
+			elseif s.phase == "vote" and s.night == 1 then
+				Analytics.roundStep(plr, "Голосование 1")
+				if rounds == 0 then
+					Analytics.onboarding(plr, "Первое голосование")
+				end
+			elseif s.phase == "ended" then
+				Analytics.roundStep(plr, "Конец раунда")
+				local won = (s.winner == "met" and p.role == "met") or (s.winner == "guest" and p.role == "guest")
+				local correct = 0
+				for _, e in s.journal do
+					if e.author == id and e.correct then
+						correct += 1
+					end
+				end
+				local withFriend = false
+				for otherId in s.players do
+					if otherId ~= id then
+						local ok, friends = pcall(function()
+							return plr:IsFriendsWith(otherId)
+						end)
+						if ok and friends then
+							withFriend = true
+							break
+						end
+					end
+				end
+				local summary = Progress.finishRound(plr, {
+					won = won,
+					wasGuest = p.role == "guest",
+					survived = p.status == "inside" or p.status == "outside",
+					correctEntries = correct,
+					withFriend = withFriend,
+				})
+				if summary then
+					summary.nextRoundIn = Config.Phase.ended + Config.NextRoundCountdown
+					eventRemote:FireClient(plr, { type = "summary", summary = summary })
+				end
+				local after = Progress.get(plr)
+				if after and after.rounds == 1 then
+					Analytics.onboarding(plr, "Закончил первый раунд")
+				elseif after and after.rounds == 3 then
+					Analytics.onboarding(plr, "Закончил третий раунд")
+				end
+			end
+		end
+	end
+end
 
 -- ---------- главный цикл ----------
 local sendTimer = 0
@@ -308,6 +442,7 @@ RunService.Heartbeat:Connect(function(dt)
 	if s.phase ~= lastPhase then
 		lastPhase = s.phase
 		placeAll(s)
+		onPhase(s)
 	end
 	applyWorld(s)
 	sendEvents(s)
@@ -319,7 +454,10 @@ RunService.Heartbeat:Connect(function(dt)
 
 	if shouldSend then
 		for _, plr in Players:GetPlayers() do
-			stateRemote:FireClient(plr, Round.snapshotFor(s, plr.UserId))
+			local snapshot = Round.snapshotFor(s, plr.UserId)
+			local d = Progress.get(plr)
+			snapshot.newbie = d ~= nil and d.rounds < 2
+			stateRemote:FireClient(plr, snapshot)
 		end
 	end
 end)

@@ -412,6 +412,136 @@ local function renderBracelets()
 	end
 end
 
+-- ---------- удержание: прогресс в лобби, итоги раунда, подсказки новичкам ----------
+local GOLD = Color3.fromRGB(255, 205, 90)
+
+local function bar(parent: Instance, pos: UDim2, width: number, fill: number): Frame
+	local back = frame(parent, UDim2.fromOffset(width, 12), pos, Color3.fromRGB(38, 50, 75), 0)
+	frame(back, UDim2.fromScale(math.clamp(fill, 0, 1), 1), UDim2.fromScale(0, 0), Color3.fromRGB(255, 154, 58), 0)
+	return back
+end
+
+local function taskRows(parent: Instance, tasks: { any }, y: number, width: number): number
+	for _, t in tasks do
+		local mark = if t.done then "✓" else string.format("%d/%d", t.progress, t.target)
+		local l = label(parent, string.format("%s  %s", mark, t.text), UDim2.fromOffset(width, 22), UDim2.fromOffset(16, y),
+			if t.done then Color3.fromRGB(140, 220, 150) else Color3.fromRGB(223, 230, 242), 14)
+		l.TextXAlignment = Enum.TextXAlignment.Left
+		l.Font = Enum.Font.Gotham
+		y += 24
+	end
+	return y
+end
+
+-- панель прогресса в лобби
+local lobbyCard = frame(gui, UDim2.fromOffset(340, 230), UDim2.new(0, 16, 0.5, -115), Color3.fromRGB(14, 20, 34), 0.15)
+lobbyCard.Visible = false
+
+local function renderLobbyCard(p)
+	clear(lobbyCard)
+	if not p then
+		lobbyCard.Visible = false
+		return
+	end
+	lobbyCard.Visible = true
+	local title = label(lobbyCard, string.format("%s · уровень %d", p.title, p.level), UDim2.fromOffset(310, 26), UDim2.fromOffset(16, 10), P.warm, 18)
+	title.TextXAlignment = Enum.TextXAlignment.Left
+	bar(lobbyCard, UDim2.fromOffset(16, 42), 308, p.xp / math.max(1, p.xpNext))
+	local info = label(lobbyCard, string.format("Опыт %d/%d · дней экспедиции: %d · досье: %d", p.xp, p.xpNext, p.playDays, p.dossier),
+		UDim2.fromOffset(310, 20), UDim2.fromOffset(16, 58), P.ice, 12)
+	info.TextXAlignment = Enum.TextXAlignment.Left
+	info.Font = Enum.Font.Gotham
+	local head = label(lobbyCard, "ЗАДАНИЯ ДНЯ", UDim2.fromOffset(200, 20), UDim2.fromOffset(16, 88), P.warm, 13)
+	head.TextXAlignment = Enum.TextXAlignment.Left
+	taskRows(lobbyCard, p.tasks, 112, 310)
+end
+
+-- итоги раунда
+local summaryCard = frame(gui, UDim2.fromOffset(460, 440), UDim2.new(0.5, -230, 0.5, -220), Color3.fromRGB(14, 20, 34), 0.05)
+local summaryStroke = Instance.new("UIStroke")
+summaryStroke.Color = P.warm
+summaryStroke.Thickness = 2
+summaryStroke.Parent = summaryCard
+summaryCard.Visible = false
+local summaryUntil = 0
+
+local function showSummary(sm)
+	clear(summaryCard)
+	summaryCard.Visible = true
+	summaryUntil = os.clock() + (sm.nextRoundIn or 15)
+	local y = 12
+	label(summaryCard, string.format("+%d ОПЫТА", sm.gained), UDim2.fromOffset(430, 40), UDim2.fromOffset(15, y), GOLD, 30)
+	y += 44
+	for _, line in sm.lines do
+		local l = label(summaryCard, line, UDim2.fromOffset(420, 20), UDim2.fromOffset(20, y), Color3.fromRGB(223, 230, 242), 14)
+		l.TextXAlignment = Enum.TextXAlignment.Left
+		l.Font = Enum.Font.Gotham
+		y += 20
+	end
+	y += 6
+	local lv = label(summaryCard, string.format("%s · уровень %d", sm.title, sm.level), UDim2.fromOffset(420, 22), UDim2.fromOffset(20, y), P.warm, 16)
+	lv.TextXAlignment = Enum.TextXAlignment.Left
+	y += 26
+	bar(summaryCard, UDim2.fromOffset(20, y), 420, sm.xp / math.max(1, sm.xpNext))
+	y += 20
+	for _, u in sm.unlocked do
+		local l = label(summaryCard, "★ " .. u, UDim2.fromOffset(420, 22), UDim2.fromOffset(20, y), GOLD, 15)
+		l.TextXAlignment = Enum.TextXAlignment.Left
+		y += 22
+	end
+	if sm.page then
+		local paper = frame(summaryCard, UDim2.fromOffset(420, 70), UDim2.fromOffset(20, y + 4), P.paper, 0)
+		local t = label(paper, string.format("Досье %d/%d: %s", sm.page.index, sm.page.total, sm.page.text), UDim2.new(1, -16, 1, -8), UDim2.fromOffset(8, 4), Color3.fromRGB(43, 58, 92), 13)
+		t.Font = Enum.Font.Gotham
+		t.TextXAlignment = Enum.TextXAlignment.Left
+		y += 80
+	end
+	y = taskRows(summaryCard, sm.tasks, y + 4, 420)
+	-- что ждёт дальше: причина сыграть ещё и вернуться завтра
+	local nextBits = {}
+	if sm.roundsToPage then
+		table.insert(nextBits, string.format("Новая страница досье через %d раунд(а)", sm.roundsToPage))
+	end
+	if sm.nextDayReward then
+		table.insert(nextBits, string.format("День экспедиции %d: %s", sm.nextDayReward.day, sm.nextDayReward.name))
+	end
+	local nx = label(summaryCard, table.concat(nextBits, "\n"), UDim2.fromOffset(420, 40), UDim2.fromOffset(20, y + 4), P.ice, 13)
+	nx.TextXAlignment = Enum.TextXAlignment.Left
+	nx.Font = Enum.Font.Gotham
+end
+
+-- подсказки новичкам: одна короткая строка, без стены текста
+local hint = frame(gui, UDim2.fromOffset(560, 40), UDim2.new(0.5, -280, 0, 156), Color3.fromRGB(10, 14, 24), 0.25)
+local hintText = label(hint, "", UDim2.new(1, -16, 1, 0), UDim2.fromOffset(8, 0), Color3.fromRGB(255, 230, 170), 15)
+hint.Visible = false
+
+local function renderHint()
+	if not snap or not snap.newbie or snap.phase == "lobby" or snap.phase == "ended" then
+		hint.Visible = false
+		return
+	end
+	local mine = myState()
+	local text = ""
+	if snap.phase == "day" then
+		text = "Подойди к прибору (у мачты или в приборной) и запиши показание в журнал"
+	elseif snap.phase == "night" then
+		if mine and mine.role == "guest" then
+			text = "Ты Гость: способности слева. Действуй, когда рядом никого"
+		elseif snap.knock then
+			text = "Стучат! Проверь глазок. Открыть = держать кнопку 3 секунды"
+		else
+			text = "Держи печь и лампу. Дверь без проверки не открывай"
+		end
+	elseif snap.phase == "discuss" then
+		text = "Сравните журнал: чьи записи не сходятся?"
+	elseif snap.phase == "vote" then
+		text = "Выбери, кого запереть. Не уверен — пропусти"
+	end
+	hintText.Text = text
+	hint.Visible = text ~= ""
+end
+
+
 local phaseNames = {
 	intro = "НАЧАЛО",
 	day = "ДЕНЬ",
@@ -432,8 +562,15 @@ local function render()
 		heatBox.Visible, doorPanel.Visible, knockBox.Visible = false, false, false
 		guestPanel.Visible, journalBtn.Visible = false, false
 		journal.Visible = false
+		renderLobbyCard(snap.progress)
+		renderHint()
 		return
 	end
+	lobbyCard.Visible = false
+	if summaryCard.Visible and snap.phase == "intro" then
+		summaryCard.Visible = false
+	end
+	renderHint()
 	heatBox.Visible, journalBtn.Visible = true, true
 	phaseLabel.Text = string.format("%s %d/%d · %d", phaseNames[snap.phase] or snap.phase, snap.night, snap.nights, snap.phaseLeft)
 	heatFill.Size = UDim2.fromScale(math.clamp(snap.heat / 100, 0, 1), 1)
@@ -473,6 +610,7 @@ local function render()
 		then "Пиши то, что видишь. Даже если страшно."
 		else "Записывать можно только днём."
 end
+
 
 -- ---------- сеть ----------
 StateRemote.OnClientEvent:Connect(function(s)
@@ -525,6 +663,8 @@ EventRemote.OnClientEvent:Connect(function(e)
 		local text = if e.winner == "met" then "ПОБЕДА МЕТЕОРОЛОГОВ" elseif e.winner == "guest" then "ПОБЕДА ГОСТЯ" else "НИЧЬЯ"
 		showBanner(text .. "\n" .. (e.reason or ""), if e.winner == "guest" then P.danger else P.warm, 9)
 		picker.Visible = false
+	elseif t == "summary" then
+		showSummary(e.summary)
 	elseif t == "blizzard" then
 		showBanner("Метель!", P.ice, 3)
 	elseif t == "lampPenalty" then
@@ -537,6 +677,9 @@ local announcedRole = false
 RunService.Heartbeat:Connect(function()
 	if banner.Visible and os.clock() > bannerUntil then
 		banner.Visible = false
+	end
+	if summaryCard.Visible and os.clock() > summaryUntil then
+		summaryCard.Visible = false
 	end
 	renderBracelets()
 	if snap and snap.phase == "intro" and not announcedRole then

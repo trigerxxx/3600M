@@ -248,7 +248,13 @@ local function finishVote(s: State)
 	if lockedId then
 		local p = s.players[lockedId]
 		p.status = "locked"
-		emit(s, { type = "locked", id = p.id, role = p.role })
+		local voters = {}
+		for voter, target in s.votes do
+			if target == lockedId then
+				table.insert(voters, voter)
+			end
+		end
+		emit(s, { type = "locked", id = p.id, role = p.role, voters = voters })
 	else
 		emit(s, { type = "locked", id = 0 })
 	end
@@ -356,7 +362,7 @@ function Round.writeJournal(s: State, id: number, instrument: string, value: str
 		correct = value == s.truth[instrument],
 	})
 	p.wroteToday = true
-	emit(s, { type = "journal" })
+	emit(s, { type = "journal", id = id, correct = value == s.truth[instrument] })
 	return true
 end
 
@@ -367,6 +373,7 @@ function Round.loadCoal(s: State, id: number): boolean
 	end
 	s.coal -= 1
 	addHeat(s, Config.CoalPerLoad)
+	emit(s, { type = "coal", id = id })
 	return true
 end
 

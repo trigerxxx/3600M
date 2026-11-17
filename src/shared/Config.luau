@@ -6,6 +6,7 @@ local Config = {}
 Config.MinPlayers = 4
 Config.MaxPlayers = 8
 Config.LobbyCountdown = 10
+Config.NextRoundCountdown = 6 -- после раунда: «ещё один раунд» стартует быстро
 
 -- Гостей и ночей по числу игроков
 function Config.GuestsFor(n: number): number
