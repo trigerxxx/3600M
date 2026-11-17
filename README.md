@@ -21,6 +21,7 @@
 | [docs/04-design-ideas.md](docs/04-design-ideas.md) | Идеи геймдизайна и план удержания игроков |
 | [docs/05-whiteout.md](docs/05-whiteout.md) | Вторая игра: прятки с тепловизором |
 | [docs/06-plan.md](docs/06-plan.md) | Этапы, сроки, бюджет, цель «10 игр до осени 2027», запуск |
+| [docs/07-tasks-balance.md](docs/07-tasks-balance.md) | Задания на станции, тепло, дверь, способности Гостя, баланс раунда |
 | [art/3600-sketch.png](art/3600-sketch.png) | Эскиз стиля: иконка, ночная сцена, журнал, план станции |
 
 ![Эскиз стиля](art/3600-sketch.png)
