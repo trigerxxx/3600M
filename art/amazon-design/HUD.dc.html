@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>33 Days — экран игры днём</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700;800;900&amp;family=Nunito:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="position: relative; width: 1280px; height: 720px; overflow: hidden; font-family: Nunito, sans-serif; color: #FFFFFF; background: linear-gradient(180deg, #7FD3E8 0%, #BFE9C9 38%, #2E8A47 60%, #14602A 100%)">
+
+  <svg width="1280" height="720" viewBox="0 0 1280 720" style="position: absolute; left: 0; top: 0" aria-hidden="true">
+    <path d="M0 330 Q120 250 240 320 Q360 240 480 310 Q600 230 720 300 Q840 240 960 310 Q1080 250 1280 300 L1280 720 L0 720 Z" fill="#1E7A34"/>
+    <path d="M0 420 Q160 360 320 430 Q480 370 640 440 Q800 380 960 440 Q1120 380 1280 430 L1280 720 L0 720 Z" fill="#17652B"/>
+    <path d="M300 520 Q520 470 760 520 Q980 470 1280 520 L1280 720 L0 720 L0 540 Z" fill="#8A6A40"/>
+    <path d="M0 600 Q300 560 640 610 Q980 560 1280 600 L1280 720 L0 720 Z" fill="#6E5232"/>
+    <g transform="translate(700 470) rotate(-8)">
+      <rect x="-150" y="-36" width="300" height="72" rx="36" fill="#E9E4D8" stroke="#2A1200" stroke-width="6"/>
+      <rect x="-150" y="-6" width="300" height="12" fill="#FF6A1A"/>
+      <circle cx="-90" cy="-12" r="9" fill="#0E1A2A"/><circle cx="-60" cy="-12" r="9" fill="#0E1A2A"/><circle cx="-30" cy="-12" r="9" fill="#0E1A2A"/><circle cx="0" cy="-12" r="9" fill="#0E1A2A"/>
+      <path d="M150 -10 L240 30 L230 50 L140 20 Z" fill="#D9D2C2" stroke="#2A1200" stroke-width="6" stroke-linejoin="round"/>
+      <circle cx="-150" cy="0" r="30" fill="#FFE08A" opacity="0.95"/>
+      <circle cx="-150" cy="0" r="70" fill="#FFE08A" opacity="0.25"/>
+    </g>
+    <path d="M60 720 Q40 560 120 480 Q90 600 140 720 Z" fill="#0F4A22"/>
+    <path d="M1200 720 Q1260 560 1180 470 Q1230 610 1150 720 Z" fill="#0F4A22"/>
+    <path d="M-40 140 Q80 60 180 150 Q90 190 -40 180 Z" fill="#14602A"/>
+    <path d="M1320 120 Q1180 40 1080 140 Q1170 190 1320 170 Z" fill="#14602A"/>
+  </svg>
+
+  <div style="position: absolute; left: 24px; top: 20px; display: flex; flex-direction: column; gap: 10px">
+    <div style="display: flex; align-items: center; gap: 14px; padding: 10px 18px 10px 12px; border-radius: 20px; background: rgba(6,24,15,0.82); border: 3px solid #0B2A1A">
+      <div style="width: 56px; height: 56px; border-radius: 16px; background: #FF7A1A; border: 3px solid #2A1200; display: flex; align-items: center; justify-content: center; font-family: Rubik, sans-serif; font-weight: 900; font-size: 26px; color: #2A1200">7</div>
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <div style="font-family: Rubik, sans-serif; font-weight: 900; font-size: 22px">ДЕНЬ 7 из 33</div>
+        <div style="display: flex; align-items: center; gap: 8px">
+          <div style="width: 150px; height: 10px; border-radius: 999px; background: #062012"><div style="width: 64%; height: 100%; border-radius: 999px; background: #FFB84D"></div></div>
+          <div style="font-weight: 800; font-size: 14px; color: #FFD9A0">до заката 3:12</div>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 8px; padding: 12px 16px; border-radius: 18px; background: rgba(6,24,15,0.82); border: 3px solid #0B2A1A; width: 236px; box-sizing: border-box">
+      <div style="display: flex; align-items: center; gap: 10px"><div style="width: 62px; font-weight: 800; font-size: 14px">Голод</div><div style="flex: 1; height: 12px; border-radius: 999px; background: #062012"><div style="width: 70%; height: 100%; border-radius: 999px; background: #FFB84D"></div></div></div>
+      <div style="display: flex; align-items: center; gap: 10px"><div style="width: 62px; font-weight: 800; font-size: 14px">Жажда</div><div style="flex: 1; height: 12px; border-radius: 999px; background: #062012"><div style="width: 28%; height: 100%; border-radius: 999px; background: #E8302A"></div></div></div>
+      <div style="display: flex; align-items: center; gap: 10px"><div style="width: 62px; font-weight: 800; font-size: 14px">Силы</div><div style="flex: 1; height: 12px; border-radius: 999px; background: #062012"><div style="width: 84%; height: 100%; border-radius: 999px; background: #4FD06A"></div></div></div>
+    </div>
+  </div>
+
+  <div style="position: absolute; left: 50%; top: 20px; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; padding: 10px 20px; border-radius: 999px; background: #3A0705; border: 3px solid #E8302A; box-shadow: 0 0 24px rgba(232,48,42,0.45)">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    <div style="font-family: Rubik, sans-serif; font-weight: 800; font-size: 18px">Поиски прекратят через 26 дней</div>
+  </div>
+
+  <div style="position: absolute; right: 24px; top: 20px; display: flex; flex-direction: column; gap: 12px; align-items: flex-end">
+    <div style="width: 150px; height: 150px; border-radius: 50%; background: radial-gradient(circle, #2E8A47 0%, #14602A 70%); border: 5px solid #0B2A1A; position: relative; overflow: hidden">
+      <svg width="140" height="140" viewBox="0 0 140 140" role="img" aria-label="Мини-карта: самолёт, река, найденный пассажир">
+        <path d="M10 120 Q50 80 70 90 Q100 100 130 40" stroke="#1FB8B0" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <circle cx="70" cy="70" r="40" fill="#FFE08A" opacity="0.18"/>
+        <path d="M64 70 L76 70 M70 60 L70 82" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="104" cy="54" r="7" fill="#4FD06A" stroke="#0B2A1A" stroke-width="3"/>
+        <circle cx="34" cy="38" r="6" fill="#E8302A"/>
+      </svg>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 8px; padding: 12px 16px; border-radius: 18px; background: rgba(244,227,193,0.96); border: 3px solid #2A1200; color: #2A1200; width: 250px; box-sizing: border-box">
+      <div style="font-family: Rubik, sans-serif; font-weight: 900; font-size: 16px">НАЙДИ ПАССАЖИРОВ 2/4</div>
+      <div style="display: flex; gap: 8px">
+        <div style="width: 44px; height: 44px; border-radius: 12px; background: #4FD06A; border: 3px solid #0B2A1A; display: flex; align-items: center; justify-content: center; font-family: Rubik, sans-serif; font-weight: 900; font-size: 18px; color: #0B2A1A">М</div>
+        <div style="width: 44px; height: 44px; border-radius: 12px; background: #4FD06A; border: 3px solid #0B2A1A; display: flex; align-items: center; justify-content: center; font-family: Rubik, sans-serif; font-weight: 900; font-size: 18px; color: #0B2A1A">Л</div>
+        <div style="width: 44px; height: 44px; border-radius: 12px; background: #CDBB95; border: 3px dashed #6E5232; display: flex; align-items: center; justify-content: center; font-family: Rubik, sans-serif; font-weight: 900; font-size: 20px; color: #6E5232">?</div>
+        <div style="width: 44px; height: 44px; border-radius: 12px; background: #CDBB95; border: 3px dashed #6E5232; display: flex; align-items: center; justify-content: center; font-family: Rubik, sans-serif; font-weight: 900; font-size: 20px; color: #6E5232">?</div>
+      </div>
+      <div style="font-weight: 700; font-size: 13px">Следы у реки ведут на север</div>
+    </div>
+  </div>
+
+  <div style="position: absolute; left: 50%; top: 104px; transform: translateX(-50%); display: flex; align-items: center; gap: 12px; padding: 12px 20px; border-radius: 16px; background: rgba(10,18,32,0.88); border: 2px solid #1FB8B0">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1FB8B0" stroke-width="2.2" aria-hidden="true"><rect x="5" y="8" width="14" height="13" rx="2"/><path d="M9 8 15 3M9 13h6M9 17h6"/></svg>
+    <div style="font-weight: 700; font-size: 17px">Рация: «…это пилот… подойди к обломкам…»</div>
+  </div>
+
+  <div style="position: absolute; left: 24px; bottom: 24px; width: 150px; height: 150px; border-radius: 50%; background: rgba(255,255,255,0.14); border: 3px solid rgba(255,255,255,0.35)">
+    <div style="position: absolute; left: 47px; top: 47px; width: 56px; height: 56px; border-radius: 50%; background: rgba(255,255,255,0.42)"></div>
+  </div>
+
+  <div style="position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); display: flex; gap: 10px; padding: 10px; border-radius: 22px; background: rgba(6,24,15,0.82); border: 3px solid #0B2A1A">
+    <button type="button" aria-label="Мачете" style="position: relative; width: 70px; height: 70px; border-radius: 16px; background: #187233; border: 3px solid #FFB84D; box-shadow: 0 0 16px rgba(255,184,77,0.6); cursor: pointer"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" aria-hidden="true"><path d="M4 20 15 9c2-2 4-3 6-3-1 3-3 5-6 7L6 22z"/></svg></button>
+    <button type="button" aria-label="Сигнальная ракета, 2 штуки" style="position: relative; width: 70px; height: 70px; border-radius: 16px; background: #123A25; border: 3px solid #2E5A3E; cursor: pointer"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#E8302A" stroke-width="2.4" aria-hidden="true"><path d="M9 21h6M12 21V9M12 9l-3-4h6z"/></svg><span style="position: absolute; right: 6px; bottom: 4px; font-family: Rubik, sans-serif; font-weight: 900; font-size: 15px; color: #FFFFFF">2</span></button>
+    <button type="button" aria-label="Фляга воды, 1" style="position: relative; width: 70px; height: 70px; border-radius: 16px; background: #123A25; border: 3px solid #2E5A3E; cursor: pointer"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1FB8B0" stroke-width="2.4" aria-hidden="true"><path d="M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z"/></svg><span style="position: absolute; right: 6px; bottom: 4px; font-family: Rubik, sans-serif; font-weight: 900; font-size: 15px; color: #FFFFFF">1</span></button>
+    <button type="button" aria-label="Гаечный ключ" style="position: relative; width: 70px; height: 70px; border-radius: 16px; background: #123A25; border: 3px solid #2E5A3E; cursor: pointer"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#C9D2DB" stroke-width="2.4" aria-hidden="true"><path d="M14 4a5 5 0 0 0 5 7l-8 8a2 2 0 0 1-3-3l8-8a5 5 0 0 0-2-4z"/></svg></button>
+    <button type="button" aria-label="Деталь рации, 1" style="position: relative; width: 70px; height: 70px; border-radius: 16px; background: #123A25; border: 3px solid #2E5A3E; cursor: pointer"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#FFB84D" stroke-width="2.4" aria-hidden="true"><rect x="5" y="8" width="14" height="13" rx="2"/><path d="M9 8 15 3"/></svg><span style="position: absolute; right: 6px; bottom: 4px; font-family: Rubik, sans-serif; font-weight: 900; font-size: 15px; color: #FFFFFF">1</span></button>
+  </div>
+
+  <div style="position: absolute; right: 30px; bottom: 30px; display: flex; gap: 16px; align-items: flex-end">
+    <button type="button" style="width: 92px; height: 92px; border-radius: 50%; background: #187233; border: 4px solid #062012; box-shadow: 0 6px 0 #062012; font-family: Rubik, sans-serif; font-weight: 900; font-size: 16px; color: #FFFFFF; cursor: pointer">ПРЫЖОК</button>
+    <button type="button" style="width: 132px; height: 132px; border-radius: 50%; background: #FF7A1A; border: 4px solid #2A1200; box-shadow: 0 7px 0 #2A1200, inset 0 4px 0 rgba(255,255,255,0.45); font-family: Rubik, sans-serif; font-weight: 900; font-size: 20px; color: #2A1200; cursor: pointer">РУБИТЬ</button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":720}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

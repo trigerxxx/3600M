@@ -1,0 +1,20 @@
+{
+  "v": 3,
+  "createdOnFiles": {"v": 1, "at": "2026-11-18T09:00:00Z"},
+  "title": "33 Days — графический дизайн",
+  "launch": {"view": "canvas"},
+  "pages": [],
+  "boards": {
+    "Main.dc.html": {"x": 0, "y": 0, "w": 1440, "h": 1120, "title": "Стиль: логотип, цвета, шрифты, элементы"},
+    "Icon.dc.html": {"x": 1520, "y": 0, "w": 1200, "h": 640, "title": "Иконка игры: 2 варианта"},
+    "Thumbnail.dc.html": {"x": 1520, "y": 720, "w": 1280, "h": 720, "title": "Обложка для Roblox 16:9"},
+    "HUD.dc.html": {"x": 0, "y": 1240, "w": 1280, "h": 720, "title": "Экран игры: день в джунглях"},
+    "Repair.dc.html": {"x": 1360, "y": 1560, "w": 1280, "h": 720, "title": "Починка самолёта"},
+    "DayEnd.dc.html": {"x": 0, "y": 2080, "w": 1280, "h": 720, "title": "Итоги дня и пассажиры"}
+  },
+  "order": ["Main.dc.html", "Icon.dc.html", "Thumbnail.dc.html", "HUD.dc.html", "Repair.dc.html", "DayEnd.dc.html"],
+  "notes": {
+    "title": {"x": 0, "y": -300, "text": "33 DAYS: LOST IN THE AMAZON — графический дизайн", "kind": "title1", "maxW": 2800}
+  },
+  "designSystems": []
+}
