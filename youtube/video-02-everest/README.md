@@ -33,3 +33,13 @@ How many days would you last? Tell me in the comments.
 ## Что улучшить
 - Голос: ElevenLabs, голос Brian (`source/el_tts.py`). Ключ хранится в настройках окружения, не в коде. Рация — George, шёпот — Sarah.
 - Сделать 3–4 Shorts из лучших моментов (52-й день, разрыв палатки, тень у палатки) со ссылкой на длинное видео.
+
+## Shorts (9:16, `source/shorts.py`)
+| Файл | Длина | Крючок сверху |
+|---|---|---|
+| short1-day52 | 55 с | HE COUNTED 44 DAYS ON EVEREST |
+| short2-tear | 58 с | DAY 41. MINUS 40. THE TENT RIPS. |
+| short3-shadow | 30 с | SOMEONE WAS OUTSIDE HIS TENT. AT 8,000 M. |
+
+Как выкладывать: длинное видео первым, затем по одному Shorts в день. В YouTube Studio у каждого Shorts в поле «Связанное видео» выбрать длинный ролик, тогда под Shorts появится кнопка перехода на него.
+Названия: «He counted 44 days on Everest… he was wrong #shorts», «His tent ripped at -40° #shorts», «Someone was outside his tent at 8,000 m #shorts».
