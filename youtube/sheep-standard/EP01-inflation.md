@@ -6,7 +6,7 @@
 
 ---
 
-**[Кремовый фон. Сурок держит на лапе лепёшку. Ценник «1 🐑».]**
+**[Белый фон. Сурок держит на лапе лепёшку. Ценник «1 🐑».]**
 Imagine a loaf of bread costs one sheep.
 **[Ценник «1» → «100». Сурок встаёт столбиком.]**
 Now imagine, a week later, the same loaf costs a hundred sheep. Same bread. Same oven. Same marmot.

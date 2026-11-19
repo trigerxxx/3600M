@@ -5,7 +5,7 @@ import random
 from PIL import Image, ImageDraw, ImageFont
 
 INK = (17, 17, 17)
-BG = (255, 246, 227)
+BG = (255, 255, 255)
 F = "/usr/share/fonts/opentype/inter/InterDisplay-Black.otf"
 FB = "/usr/share/fonts/opentype/inter/Inter-Bold.otf"
 R = random.Random(4)
