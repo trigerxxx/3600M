@@ -438,9 +438,12 @@ def hud_draw(im, T, tl):
     d.ellipse((60, HUD_Y + 8, 76, HUD_Y + 24), fill=(232, 48, 42) if int(T * 1.5) % 2 == 0 else (90, 20, 18))
     d.text((92, HUD_Y), left, font=f, fill=(225, 228, 236))
     if clk:
-        h_, m_, s_ = (int(x) for x in clk.split(":"))
-        secs = h_ * 3600 + m_ * 60 + s_ + int(T - bl["start"])
-        txt = f"{secs // 3600 % 24:02d}:{secs // 60 % 60:02d}:{secs % 60:02d}"
+        if re.fullmatch(r"\d+:\d+:\d+", clk):   # бегущие часы
+            h_, m_, s_ = (int(x) for x in clk.split(":"))
+            secs = h_ * 3600 + m_ * 60 + s_ + int(T - bl["start"])
+            txt = f"{secs // 3600 % 24:02d}:{secs // 60 % 60:02d}:{secs % 60:02d}"
+        else:                                       # любой текст как есть («--:--:--», «LIVE»)
+            txt = clk
         fm = font(F_MONO, 34)
         d.text((W - 60 - fm.getlength(txt), HUD_Y - 3), txt, font=fm, fill=(225, 228, 236))
     d.line((60, HUD_Y + 56, W - 60, HUD_Y + 56), fill=(50, 54, 64), width=2)
