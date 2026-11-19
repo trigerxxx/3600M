@@ -1,134 +1,100 @@
-# Эпизод 1 — The Khan Printed Sheep That Didn't Exist (Inflation Explained)
+# Inflation Explained with Sheep
 
-Длина ~6–7 мин (≈820 слов речи; для рекламы в середине нужно 8+: при сборке добавим паузы-шутки и ещё одну реальную историю). Рассказчик (NARRATOR, голос George); герои — короткие реплики своими голосами.
-В квадратных скобках — что на экране (для автора: какие рисунки нужны; для Claude: монтаж).
+Самостоятельный ролик, ~6–7 мин (≈850 слов). Один рассказчик (голос George, спокойный, сухой юмор).
+Реплики персонажей — **облачками-текстом на экране** (как подписи в комиксе), без отдельных голосов.
+В квадратных скобках — что на экране. Все персонажи — сурок в разных костюмах.
 
 ---
 
-**[Общий вид долины. Ветер, колокольчики овец.]**
-NARRATOR: One morning in the Valley, a loaf of bread cost one sheep.
-**[Ценник «1» → «100», удар.]**
-NARRATOR: By lunch, it cost a hundred.
-**[Асан встаёт столбиком в шоке, держит лепёшку.]**
-ASAN: …I just wanted breakfast.
-**[Заставка: THE SHEEP STANDARD · Episode 1: Inflation]**
+**[Кремовый фон. Сурок держит на лапе лепёшку. Ценник «1 🐑».]**
+Imagine a loaf of bread costs one sheep.
+**[Ценник «1» → «100». Сурок встаёт столбиком.]**
+Now imagine, a week later, the same loaf costs a hundred sheep. Same bread. Same oven. Same marmot.
+What happened? Inflation. And it's easier to understand than it sounds. All you need is a few sheep.
+**[Название: INFLATION · explained with sheep]**
 
-## Как всё работало
-**[Джайлоо. Асан пасёт овец.]**
-NARRATOR: To understand how that happened, meet Asan. Asan is a marmot. Asan is a shepherd. It's a long story.
-NARRATOR: In the Valley, sheep are money. If you have sheep, you're rich. If you have a lot of sheep, you're very rich, and very tired.
-**[Асан тянет овцу на верёвке на базар; овца упирается.]**
-NARRATOR: But sheep are terrible money. They're heavy. They eat. They wander off.
-**[Лиса за прилавком.]**
-LISA: Bread is half a sheep.
-ASAN: How do I pay half a sheep?
-LISA: …Carefully.
+**[Сурок тянет овцу на верёвке. Овца упирается.]**
+First, a quick problem. In this country, sheep are money. If you have sheep, you're rich.
+But sheep are terrible money. They're heavy. They eat. They wander off. And you can't pay for bread with half a sheep.
+**[Облачко продавца: «Bread is half a sheep.» Облачко сурка: «…How?»]**
 
-**[Юрта Хана. Хан Беркут раскрывает крылья.]**
-NARRATOR: So the ruler of the Valley, Khan Berkut, had an idea.
-KHAN: Bring me your sheep. I'll keep them safe in my flock. And for every sheep, I'll give you this.
-**[Войлочная расписка «1 SHEEP» с красной печатью, крупно.]**
-NARRATOR: A felt receipt, with the Khan's stamp. One receipt means one real sheep, waiting in the Khan's flock.
-NARRATOR: Now nobody has to drag sheep to the bazaar. You just carry receipts. They don't eat, they don't run away, and you can't accidentally pay half of one. Well, you can tear it. Please don't.
-NARRATOR: Congratulations. The Valley just invented paper money.
+**[Сурок в короне ставит печать на войлочную расписку.]**
+So the King had an idea. Bring your sheep to the royal flock, and he gives you one of these. A felt receipt that says: one sheep.
+Now nobody drags sheep to the market. You carry receipts. They don't eat. They don't run away.
+Congratulations. You've just invented paper money.
 
-## Цены
-**[Базар. Лиса, 100 лепёшек на прилавке.]**
-NARRATOR: There are exactly one hundred sheep in the Khan's flock. So there are exactly one hundred receipts in the Valley.
-NARRATOR: And at Lisa's stall, there are exactly one hundred loaves of bread.
-NARRATOR: So one loaf costs… one receipt.
-LISA: Bread! One sheep! Fresh today! Mostly!
-**[Доска Токто: «PRICE = MONEY ÷ STUFF».]**
-NARRATOR: This is the most important idea in the whole video. Prices are just money, divided by stuff. A hundred receipts. A hundred loaves. One receipt per loaf.
+**[Стадо из 100 овец. Рядом 100 лепёшек.]**
+Now let's keep it simple. In the whole country, there are one hundred sheep in the royal flock. So there are one hundred receipts.
+And in the whole country, there are one hundred loaves of bread.
+So how much does one loaf cost? One receipt.
+**[Доска: PRICE = MONEY ÷ STUFF]**
+This is the most important idea in this video. Prices are just money, divided by stuff. A hundred receipts, a hundred loaves. One receipt per loaf.
 
-## Решение Хана
-**[Хан смотрит на эскиз золотой юрты.]**
-NARRATOR: Now, the Khan has a dream. A golden yurt. The biggest in the mountains. And he does not have enough receipts to pay the builders.
-KHAN: Taxes make people angry. Borrowing makes me look poor.
-**[Хан медленно поворачивается к печати. На печать падает луч света.]**
-KHAN: …But I have a stamp.
-NARRATOR: The Khan can't make sheep. Sheep take a whole spring to make. But receipts? Receipts take one stamp.
-**[Стук печати, стопка растёт.]**
-NARRATOR: So he stamps a hundred new receipts. No new sheep behind them. Just felt, and confidence.
-NARRATOR: He pays the builders. The builders go shopping. And for one beautiful afternoon, everyone feels rich.
-**[Кочкор с мегафоном-рогом.]**
-KOCHKOR: Breaking news! Everybody is rich! EVERYBODY IS RICH!
+**[Король смотрит на эскиз огромной золотой статуи сурка.]**
+Now, the King has a dream. A giant golden statue. Of himself. Obviously.
+But statues are expensive, and he doesn't have enough receipts to pay the builders.
+**[Облачко короля: «Taxes? Unpopular.» → «Borrowing? Embarrassing.»]**
+**[Король медленно смотрит на печать. Луч света.]**
+But he does have a stamp.
+The King can't make sheep. Sheep take a whole spring to make. Receipts take one stamp.
+**[Стопка расписок растёт под стук печати.]**
+So he stamps a hundred new receipts. With no new sheep behind them. Just felt, and confidence.
+He pays the builders. The builders go shopping. And for one beautiful afternoon, everyone feels rich.
 
-## Последствия
-**[Базар. Длинная очередь у лавки Лисы.]**
-NARRATOR: Here's the thing. There are now two hundred receipts in the Valley. But there are still only one hundred loaves of bread.
-**[Лиса смотрит на очередь, на стопки расписок, меняет ценник 1 → 2.]**
-NARRATOR: Lisa sees a long line, and a lot of receipts. So Lisa does what any fox would do.
-LISA: Two receipts. Same bread. Special price, just for you.
-NARRATOR: Twice the money. Same amount of stuff. Prices double. That, right there, is inflation.
+**[Лавка. Длинная очередь сурков. Продавец в фартуке.]**
+But here's the problem. There are now two hundred receipts in the country. And there are still only one hundred loaves of bread.
+**[Продавец смотрит на очередь и меняет ценник 1 → 2.]**
+The shopkeeper sees a long line of marmots, all waving receipts. So he does what any shopkeeper would do.
+He raises the price.
+Twice the money. The same amount of stuff. Prices double. That, right there, is inflation.
+**[Доска: MORE MONEY ≠ MORE STUFF]**
+Printing receipts doesn't bake bread. It just makes every receipt buy less bread.
 
-**[Пещера Токто. Як у доски: «MORE MONEY ≠ MORE STUFF».]**
-TOKTO: Stamping receipts… doesn't bake bread. It just makes every receipt… buy less bread.
-NARRATOR: Tokto speaks slowly. He is a yak. He is also always right.
+**[Сурок-работник считает 10 расписок.]**
+Now, who wins, and who loses?
+This marmot earns ten receipts a week. Nobody raised his pay. But everything now costs twice as much. He just got poorer, and nobody took a single receipt from him.
+**[Бабушка-сурок в платке с сундуком.]**
+Grandma saved receipts her whole life. Overnight, her savings buy half as much.
+**[Король у статуи, довольный.]**
+And the King? He spent the new receipts first, before prices went up.
+**[Доска: FIRST SPENDER WINS. LAST ONE PAYS.]**
+That's the quiet rule of new money. Whoever spends it first wins. Everyone after pays.
 
-## Кто выиграл, кто проиграл
-**[Асан дома, считает свои расписки.]**
-NARRATOR: Now look at who wins, and who loses.
-NARRATOR: Asan still earns ten receipts a week for his shepherding. Nobody raised his pay. But everything costs twice as much. Asan just got poorer, and nobody took a single receipt from him.
-**[Старая бабушка-сурок с сундуком расписок.]**
-NARRATOR: Grandma Marmot saved receipts her whole life. Overnight, her savings buy half as much.
-**[Хан у недостроенной золотой юрты, довольный.]**
-NARRATOR: And the Khan? He spent the new receipts first, before prices went up. The first person to spend new money always wins. Everyone after him pays.
-**[Доска: «NEW MONEY: FIRST SPENDER WINS. LAST ONE PAYS.»]**
+**[Статуя без головы. Король в панике.]**
+But the statue isn't finished. And now the builders want more receipts, because everything costs more.
+So the King stamps more. And prices go up. So he stamps more. And prices go up again.
+**[Быстрый монтаж: печать — ценник 2 → 4 → 8 → 16 → 100.]**
+When this spins out of control, economists call it hyperinflation.
+**[Сурок катит тележку расписок за одной лепёшкой. Облачко продавца: «That'll be the whole cart.»]**
 
-## Гиперинфляция
-**[Золотая юрта без крыши. Хан в панике.]**
-NARRATOR: But the golden yurt isn't finished. And now the builders want more receipts, because everything costs more.
-KHAN: Fine. Stamp! Stamp! STAMP!
-**[Монтаж ускоряется: печать — ценник 2 → 4 → 8 → 16 → 100. Звук ускоряется.]**
-NARRATOR: More receipts. Higher prices. More receipts. Higher prices.
-NARRATOR: When this gets completely out of control, economists call it hyperinflation.
-**[Асан катит тележку расписок к прилавку.]**
-ASAN: One loaf, please.
-LISA: That'll be the whole cart.
+**[Сурок с расписками бежит к королевскому стаду. За ним толпа сурков.]**
+At some point, someone has a clever idea. Each receipt is supposed to be one sheep. So let's just swap receipts for real sheep!
+Unfortunately, everyone has the same clever idea, at the same time. There are hundreds of receipts, and only one hundred sheep.
+**[Король закрывает ворота загона. Облачко: «The sheep are resting.»]**
+And that's the day people stop trusting the receipts.
 
-## А что со овцами?
-**[Асан идёт к стаду Хана с расписками.]**
-NARRATOR: Then Asan has a clever thought.
-ASAN: Wait. Each receipt is one sheep. I'll just trade my receipts for real sheep!
-**[Толпа зверей бежит к стаду. Кочкор бежит первым.]**
-KOCHKOR: Everyone! To the sheep!
-NARRATOR: Unfortunately, everyone had the same clever thought. There are hundreds of receipts, and only one hundred sheep.
-**[Хан закрывает ворота загона крылом.]**
-KHAN: The sheep are… resting.
-NARRATOR: And that's the day people stopped trusting the receipts. But that's a story for another episode.
-
-## Meanwhile, in the real world
-**[Переход: «MEANWHILE, IN THE REAL WORLD…». Рисунки, не фото.]**
-NARRATOR: This sounds like a cartoon. It isn't.
-NARRATOR: Germany, 1923. The government printed money to pay its bills. By November, a single loaf of bread cost around two hundred billion marks. Workers were paid twice a day, and ran to the shops before prices changed again.
-**[Рисунок: тачка с купюрами; ценник с длинным числом.]**
-NARRATOR: Zimbabwe, 2008. Prices were doubling roughly every day. The country printed a one hundred trillion dollar note. It didn't stay valuable for long.
+**[Надпись: MEANWHILE, IN THE REAL WORLD]**
+This sounds silly. It isn't.
+**[Рисунок: тачка с купюрами.]**
+Germany, 1923. The government printed money to pay its bills. By November, a single loaf of bread cost around two hundred billion marks. Workers were paid twice a day, and ran to the shops before prices changed again.
 **[Рисунок: купюра 100 000 000 000 000.]**
-NARRATOR: Same story, every time. More and more money. The same amount of stuff.
+Zimbabwe, 2008. Prices were doubling roughly every day. The country printed a one hundred trillion dollar note.
+Same story both times. More and more money. The same amount of stuff.
 
-## Вся ли инфляция плохая
-**[Токто у доски, спокойно.]**
-NARRATOR: So is all inflation bad? Not exactly.
-TOKTO: A little… is normal. Many central banks aim for about two percent a year. Slow. Predictable.
-NARRATOR: The problem isn't prices rising a little. The problem is prices rising fast, when nobody knows how fast.
+**[Сурок в пиджаке банкира, спокойно у доски.]**
+So is all inflation bad? Not really. A little is normal. Many central banks aim for about two percent a year. Slow, and predictable.
+The problem isn't prices rising a little. The problem is prices rising fast, when nobody knows how fast.
 
-## Три урока
-**[Доска: три пункта появляются по одному.]**
-NARRATOR: Three things to remember.
-NARRATOR: One. Prices are money divided by stuff. More money, same stuff, higher prices.
-NARRATOR: Two. Inflation is a hidden tax on people who save, and on people whose pay doesn't keep up.
-NARRATOR: Three. Whoever gets the new money first, wins.
+**[Доска: три пункта по одному.]**
+So, three things to remember.
+One. Prices are money divided by stuff. More money, same stuff, higher prices.
+Two. Inflation is a hidden tax on savers, and on anyone whose pay doesn't keep up.
+Three. Whoever gets the new money first, wins.
 
-## Тизер
-**[Вечер. Долина. Золотая юрта блестит. Над пиками собираются тучи.]**
-NARRATOR: The Khan finally finished his golden yurt.
-KHAN: Magnificent.
-NARRATOR: But Asan still can't afford breakfast. So tomorrow, he's going to do something brave.
-**[Асан у входа в пещеру Токто.]**
-NARRATOR: He's going to borrow sheep.
-NARRATOR: Next time, on The Sheep Standard.
-**[Заставка + «Subscribe to find out what a yak charges for a loan.»]**
+**[Король у готовой золотой статуи. Рядом сурок-работник с пустой тарелкой.]**
+The King finally finished his statue. It's magnificent.
+And the marmot still can't afford breakfast.
+**[Сурок медленно встаёт столбиком. Затемнение.]**
 
 ---
 
@@ -136,11 +102,10 @@ NARRATOR: Next time, on The Sheep Standard.
 - Германия, ноябрь 1923: буханка хлеба стоила порядка 200 млрд марок.
 - Зимбабве, 2008: цены удваивались примерно каждые 24 часа (Hanke & Kwok, Cato Journal, 2009); банкнота 100 трлн Z$.
 - Ориентир многих центробанков по инфляции — около 2% в год.
-- Богатство в скоте у кочевников Центральной Азии — исторический факт; долина и герои вымышлены.
 - *Not financial advice. For education and fun.*
 
-## Shorts из эпизода
-1. «How do I pay half a sheep?» — почему появились деньги (30 с).
-2. «Prices are money divided by stuff» — 100 расписок, 100 лепёшек → удвоение (35 с).
-3. «Who wins from printing money?» — Хан тратит первым (35 с).
-4. «Everyone! To the sheep!» — расписок больше, чем овец (40 с).
+## Shorts из ролика
+1. «You can't pay half a sheep» — почему появились деньги (30 с).
+2. «Prices are money divided by stuff» (35 с).
+3. «Who wins when money is printed?» (35 с).
+4. «The whole cart» — гиперинфляция и Германия 1923 (40 с).
