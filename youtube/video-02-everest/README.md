@@ -1,6 +1,6 @@
 # Ролик №2: Everest — 44 Days in the Dark (длинный формат)
 
-Длина 8:18, 1920×1080, английский рассказчик, субтитры, звуковой дизайн. История автора про Ильяса, поворот с 52-м днём. Ролик подводит к игре «EVEREST: Get Down Alive».
+Длина 8:14, 1920×1080, английский рассказчик, субтитры, звуковой дизайн. История автора про Ильяса, поворот с 52-м днём. Ролик подводит к игре «EVEREST: Get Down Alive».
 
 Видео в репозиторий не кладём: файл больше 100 МБ, такие GitHub не принимает. Чтобы собрать заново: `python3 source/render.py`.
 
@@ -19,12 +19,12 @@ This is a fictional story.
 
 Chapters:
 0:00 Intro
-0:50 Chapter 1: The Storm
-2:09 Chapter 2: The Rules
-3:13 Chapter 3: The Long Dark
-4:37 Chapter 4: Day 41
-5:46 Chapter 5: Day 44
-6:37 Chapter 6: The Mistake
+0:49 Chapter 1: The Storm
+2:02 Chapter 2: The Rules
+3:06 Chapter 3: The Long Dark
+4:30 Chapter 4: Day 41
+5:44 Chapter 5: Day 44
+6:35 Chapter 6: The Mistake
 
 How many days would you last? Tell me in the comments.
 
