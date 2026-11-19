@@ -1,100 +1,95 @@
-# Inflation Explained with Sheep
+# How Inflation Fleeces You (Inflation Explained by a Wolf)
 
-Самостоятельный ролик, ~5–6 мин (≈700 слов). Их самый популярный «Inflation» длился 2:31, так что длина не главное. Один рассказчик (голос George, спокойный, сухой юмор).
-Реплики персонажей — **облачками-текстом на экране** (как подписи в комиксе), без отдельных голосов.
-В квадратных скобках — что на экране. Все персонажи — сурок в разных костюмах.
+Самостоятельный ролик, ~5–6 мин. Рассказывает **Волк от первого лица** (голос низкий, спокойный, скучающий).
+Реплики овец — облачками-текстом. В квадратных скобках — что на экране. Белый фон.
 
 ---
 
-**[Белый фон. Сурок держит на лапе лепёшку. Ценник «1 🐑».]**
-Imagine a loaf of bread costs one sheep.
-**[Ценник «1» → «100». Сурок встаёт столбиком.]**
-Now imagine, a week later, the same loaf costs a hundred sheep. Same bread. Same oven. Same marmot.
-What happened? Inflation. And it's easier to understand than it sounds. All you need is a few sheep.
-**[Название: INFLATION · explained with sheep]**
+**[Белый фон. Волк в костюме смотрит в камеру.]**
+Hello, sheep.
+I'm a wolf. I work in finance.
+**[Волк держит ножницы для стрижки.]**
+Today I'm going to show you how you lose wool every single year, without anyone touching you.
+It's called inflation. And honestly? It's my favourite haircut.
+**[Название: HOW INFLATION FLEECES YOU]**
 
-**[Сурок тянет овцу на верёвке. Овца упирается.]**
-First, a quick problem. In this country, sheep are money. If you have sheep, you're rich.
-But sheep are terrible money. They're heavy. They eat. They wander off. And you can't pay for bread with half a sheep.
-**[Облачко продавца: «Bread is half a sheep.» Облачко сурка: «…How?»]**
+**[Пушистая овца. Подпись: WOOL = WEALTH]**
+First, the rules. In this world, wool is wealth. A fluffy sheep is a rich sheep. A bald sheep… well. You'll see.
+**[Овца пытается заплатить клочком шерсти за пучок травы. Продавец-овца в фартуке морщится.]**
+But paying with wool is messy. So the King of the sheep had an idea.
+**[Овца в короне ставит печать на войлочную расписку «1 WOOL».]**
+Give your wool to the royal storehouse, and get a receipt. One receipt, one bag of wool.
+Receipts are light. Receipts are clean. Congratulations, sheep. You've invented money.
 
-**[Сурок в короне ставит печать на войлочную расписку.]**
-So the King had an idea. Bring your sheep to the royal flock, and he gives you one of these. A felt receipt that says: one sheep.
-Now nobody drags sheep to the market. You carry receipts. They don't eat. They don't run away.
-Congratulations. You've just invented paper money.
-
-**[Стадо из 100 овец. Рядом 100 лепёшек.]**
-Now let's keep it simple. In the whole country, there are one hundred sheep in the royal flock. So there are one hundred receipts.
-And in the whole country, there are one hundred loaves of bread.
-So how much does one loaf cost? One receipt.
+**[100 расписок слева, 100 пучков травы справа.]**
+Let's keep it simple. In the whole meadow, there are one hundred receipts. And there are one hundred bundles of grass.
+So one bundle of grass costs one receipt.
 **[Доска: PRICE = MONEY ÷ STUFF]**
-This is the most important idea in this video. Prices are just money, divided by stuff. A hundred receipts, a hundred loaves. One receipt per loaf.
+Remember this. Prices are just money, divided by stuff. It's the only formula in this video. I promise.
 
-**[Король смотрит на эскиз огромной золотой статуи сурка.]**
-Now, the King has a dream. A giant golden statue. Of himself. Obviously.
-But statues are expensive, and he doesn't have enough receipts to pay the builders.
-**[Облачко короля: «Taxes? Unpopular.» → «Borrowing? Embarrassing.»]**
-**[Король медленно смотрит на печать. Луч света.]**
-But he does have a stamp.
-The King can't make sheep. Sheep take a whole spring to make. Receipts take one stamp.
-**[Стопка расписок растёт под стук печати.]**
-So he stamps a hundred new receipts. With no new sheep behind them. Just felt, and confidence.
-He pays the builders. The builders go shopping. And for one beautiful afternoon, everyone feels rich.
+**[Король-овца смотрит на эскиз огромной золотой статуи овцы.]**
+Now. The King wants a golden statue. Of himself. They always do.
+But he doesn't have enough receipts.
+**[Облачко короля: «Raise taxes?» → «They'll be angry.»]**
+**[Король смотрит на печать. Луч света.]**
+So he does the easy thing. He prints a hundred new receipts. No new wool behind them. Just ink, and optimism.
+**[Волк поправляет галстук.]**
+And who do you think gets the new receipts first?
+The builders. The King's friends. And, of course, the bank.
+I am the bank.
 
-**[Лавка. Длинная очередь сурков. Продавец в фартуке.]**
-But here's the problem. There are now two hundred receipts in the country. And there are still only one hundred loaves of bread.
-**[Продавец смотрит на очередь и меняет ценник 1 → 2.]**
-The shopkeeper sees a long line of marmots, all waving receipts. So he does what any shopkeeper would do.
-He raises the price.
-Twice the money. The same amount of stuff. Prices double. That, right there, is inflation.
-**[Доска: MORE MONEY ≠ MORE STUFF]**
-Printing receipts doesn't bake bread. It just makes every receipt buy less bread.
+**[Волк спокойно идёт к прилавку и покупает траву по старой цене.]**
+I spend the new money first, while grass still costs one receipt. Lovely.
 
-**[Сурок-работник считает 10 расписок.]**
-Now, who wins, and who loses?
-This marmot earns ten receipts a week. Nobody raised his pay. But everything now costs twice as much. He just got poorer, and nobody took a single receipt from him.
-**[Бабушка-сурок в платке с сундуком.]**
-Grandma saved receipts her whole life. Overnight, her savings buy half as much.
-**[Король у статуи, довольный.]**
-And the King? He spent the new receipts first, before prices went up.
+**[Длинная очередь овец. Продавец меняет ценник 1 → 2.]**
+But now there are two hundred receipts in the meadow, and still only one hundred bundles of grass.
+The shopkeeper sees a long line, and a lot of receipts. So she does what any shopkeeper would do.
+Twice the money. Same amount of grass. Prices double.
+That, sheep, is inflation.
+
+**[Обычная овца с зарплатой 10 расписок. Шерсть на ней медленно уменьшается.]**
+Now watch this sheep. She earns ten receipts a week. Nobody cut her pay. Nobody touched her.
+But grass costs twice as much. So every week, she can buy less.
+**[Шерсть уменьшается ещё.]**
+That's the trick. Inflation doesn't take your wool. It just makes your wool worth less.
+**[Бабушка-овца в платке с сундуком расписок. Шерсть съёживается.]**
+Grandma saved receipts her whole life. Overnight, her savings buy half as much grass.
+**[Волк пожимает плечами.]**
+Nobody stole from Grandma. Technically.
 **[Доска: FIRST SPENDER WINS. LAST ONE PAYS.]**
-That's the quiet rule of new money. Whoever spends it first wins. Everyone after pays.
 
 **[Статуя без головы. Король в панике.]**
-But the statue isn't finished. And now the builders want more receipts, because everything costs more.
-So the King stamps more. And prices go up. So he stamps more. And prices go up again.
-**[Быстрый монтаж: печать — ценник 2 → 4 → 8 → 16 → 100.]**
-When this spins out of control, economists call it hyperinflation.
-**[Сурок катит тележку расписок за одной лепёшкой. Облачко продавца: «That'll be the whole cart.»]**
-
-**[Сурок с расписками бежит к королевскому стаду. За ним толпа сурков.]**
-At some point, someone has a clever idea. Each receipt is supposed to be one sheep. So let's just swap receipts for real sheep!
-Unfortunately, everyone has the same clever idea, at the same time. There are hundreds of receipts, and only one hundred sheep.
-**[Король закрывает ворота загона. Облачко: «The sheep are resting.»]**
-And that's the day people stop trusting the receipts.
+But the statue isn't finished, and builders want more receipts, because everything costs more.
+So the King prints more. Prices rise. He prints more. Prices rise again.
+**[Быстрый монтаж: печать — ценник 2 → 4 → 8 → 16 → 100. Овцы становятся всё лысее.]**
+When it spins out of control, it's called hyperinflation.
+**[Овца везёт тачку расписок за одним пучком травы.]**
+And that's how a sheep ends up pushing a wheelbarrow of money to buy one salad.
 
 **[Надпись: MEANWHILE, IN THE REAL WORLD]**
-This sounds silly. It isn't.
+You think this is a cartoon. It's not.
 **[Рисунок: тачка с купюрами.]**
-Germany, 1923. The government printed money to pay its bills. By November, a single loaf of bread cost around two hundred billion marks. Workers were paid twice a day, and ran to the shops before prices changed again.
+Germany, 1923. The government printed money to pay its bills. By November, a single loaf of bread cost around two hundred billion marks. People were paid twice a day, and ran to the shops before prices changed again.
 **[Рисунок: купюра 100 000 000 000 000.]**
 Zimbabwe, 2008. Prices were doubling roughly every day. The country printed a one hundred trillion dollar note.
-Same story both times. More and more money. The same amount of stuff.
+Same story, every time. More money. The same amount of stuff.
 
-**[Сурок в пиджаке банкира, спокойно у доски.]**
-So is all inflation bad? Not really. A little is normal. Many central banks aim for about two percent a year. Slow, and predictable.
-The problem isn't prices rising a little. The problem is prices rising fast, when nobody knows how fast.
+**[Волк у доски, серьёзнее.]**
+Now, to be fair. A little inflation is normal. Many central banks aim for about two percent a year. Slow, and predictable.
+The problem is fast inflation. Because fast inflation shears the sheep who can least afford it.
 
-**[Доска: три пункта по одному.]**
-So, three things to remember.
-One. Prices are money divided by stuff. More money, same stuff, higher prices.
-Two. Inflation is a hidden tax on savers, and on anyone whose pay doesn't keep up.
-Three. Whoever gets the new money first, wins.
+**[Доска: HOW TO KEEP YOUR WOOL]**
+So, since I'm in a generous mood, here's how a sheep keeps her wool.
+One. Know that cash sitting still slowly loses value. It's a melting ice cube.
+Two. Ask for raises that at least keep up with prices. If your pay doesn't grow, you're getting a haircut.
+Three. Learn how saving and investing work, so your wool can grow faster than prices. We'll cover that in another video.
+**[Мелко внизу: Not financial advice.]**
 
-**[Король у готовой золотой статуи. Рядом сурок-работник с пустой тарелкой.]**
-The King finally finished his statue. It's magnificent.
-And the marmot still can't afford breakfast.
-**[Сурок медленно встаёт столбиком. Затемнение.]**
+**[Волк собирает ножницы. Овца смотрит на него.]**
+That's it for today.
+**[Облачко овцы: «Why are you telling us all this?»]**
+Because, sheep… you'll forget by Monday.
+**[Волк уходит. Овца в шоке. Затемнение.]**
 
 ---
 
@@ -102,10 +97,11 @@ And the marmot still can't afford breakfast.
 - Германия, ноябрь 1923: буханка хлеба стоила порядка 200 млрд марок.
 - Зимбабве, 2008: цены удваивались примерно каждые 24 часа (Hanke & Kwok, Cato Journal, 2009); банкнота 100 трлн Z$.
 - Ориентир многих центробанков по инфляции — около 2% в год.
+- Кто первым получает новые деньги, тот выигрывает: это называют эффектом Кантильона.
 - *Not financial advice. For education and fun.*
 
 ## Shorts из ролика
-1. «You can't pay half a sheep» — почему появились деньги (30 с).
+1. «Hello, sheep. I work in finance.» — крючок + «инфляция не забирает шерсть, она её обесценивает» (30 с).
 2. «Prices are money divided by stuff» (35 с).
-3. «Who wins when money is printed?» (35 с).
-4. «The whole cart» — гиперинфляция и Германия 1923 (40 с).
+3. «Who gets new money first? I am the bank.» (30 с).
+4. «A wheelbarrow of money for one salad» + Германия 1923 (40 с).
