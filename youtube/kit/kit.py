@@ -153,15 +153,15 @@ class device(Shot):
         stc = (255, 90, 80) if "NO" in self.status.upper() else ((120, 220, 140) if tracker else (90, 200, 120))
         d.text((scr[0] + 40, scr[1] + 84), self.status, font=sf, fill=stc)
         d.line((scr[0] + 20, scr[1] + 134, scr[2] - 20, scr[1] + 134), fill=(60, 80, 70) if tracker else (40, 46, 60), width=2)
-        mf = font(F_MONO if tracker else F_BOLD, 36 if tracker else 38)
+        mf = font(F_MONO if tracker else F_BOLD, 46 if tracker else 42)
         items = []
         for (m, t0) in zip(self.msgs, self.times):
             if T >= t0:
                 items.append((m, min(1, (T - t0) / 0.18)))
-        # раскладка снизу вверх, старые уходят вверх
-        yb = scr[3] - 40
+        # раскладка сверху вниз; если не помещается над словом, старые сообщения уходят
+        lim = CAP_Y - 110
         boxes = []
-        for (m, a) in reversed(items):
+        for (m, a) in items:
             side = m[2] if len(m) > 2 else "in"
             alert = len(m) > 3 and m[3] == "alert"
             words, lines, cur = m[1].split(), [], ""
@@ -172,12 +172,13 @@ class device(Shot):
                 else:
                     cur = (cur + " " + wd).strip()
             lines.append(cur)
-            bh = 30 + 48 * len(lines)
-            bw = max(mf.getlength(l_) for l_ in lines) + 48
-            yb -= bh + 18
-            if yb < scr[1] + 150:
-                break
-            boxes.append((m, a, side, alert, lines, bw, bh, yb))
+            boxes.append([m, a, side, alert, lines, max(mf.getlength(l_) for l_ in lines) + 48, 30 + 56 * len(lines), 0])
+        while boxes and scr[1] + 160 + sum(bx[6] + 18 for bx in boxes) > lim:
+            boxes.pop(0)
+        yy = scr[1] + 160
+        for bx in boxes:
+            bx[7] = yy
+            yy += bx[6] + 18
         for (m, a, side, alert, lines, bw, bh, yy) in boxes:
             off = (1 - ease(a)) * 30
             if side == "out":
@@ -186,7 +187,7 @@ class device(Shot):
                 tc = (20, 10, 4) if not tracker else (220, 255, 230)
             elif side == "sys":
                 bx = (scr[0] + scr[2] - bw) / 2
-                fill, tc = (0, 0, 0), (150, 160, 170)
+                fill, tc = ((10, 26, 16), (170, 255, 190)) if tracker else ((30, 34, 44), (180, 186, 196))
             else:
                 bx = scr[0] + 30
                 fill = (40, 46, 60) if not tracker else (30, 70, 44)
@@ -196,7 +197,7 @@ class device(Shot):
             yy2 = yy + off
             d.rounded_rectangle((bx, yy2, bx + bw, yy2 + bh), 26, fill=fill)
             for i, ln in enumerate(lines):
-                d.text((bx + 24, yy2 + 14 + i * 48), ln, font=mf, fill=tc)
+                d.text((bx + 24, yy2 + 14 + i * 56), ln, font=mf, fill=tc)
 
 
 class stamp(Shot):
