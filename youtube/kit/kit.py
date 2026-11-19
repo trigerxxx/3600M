@@ -300,8 +300,10 @@ class title(Shot):
     def draw(self, im, lt, dur, T):
         col = self.color or ACCENT
         lines = self.big.split("\n")
-        f = font(F_BLACK, 140 if max(len(l_) for l_ in lines) < 11 else 104)
-        y0 = VIS_CY - len(lines) * 75
+        n = max(len(l_) for l_ in lines)
+        size = 520 if n <= 2 else (140 if n < 11 else 104)   # 1–2 символа — гигантский удар («)», «?»)
+        f = font(F_BLACK, size)
+        y0 = VIS_CY - len(lines) * (size * 0.55 if n <= 2 else 75)
         if self.small:
             scenes.text_c(ImageDraw.Draw(im), W / 2, y0 - 90, self.small, font(F_BOLD, 44), (200, 206, 220), spacing=10)
 
