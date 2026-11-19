@@ -41,6 +41,7 @@
 ## Видео для YouTube и TikTok
 - Перед любым роликом читать `youtube/kit/FORMAT.md` и собирать через `youtube/kit/kit.py` (сценарий в `youtube/kit/stories/`). Новые приёмы добавлять в шаблон, а не писать заново.
 - Канал на английском: истории выживания, формат «слово за словом». Голос ElevenLabs (Brian), ключ только в Network secrets окружения.
+- Второй канал: **Coconut Republic** — мультсериал про экономику на острове, деньги — кокосы (`youtube/coconut-republic/`: BIBLE, ART-LIST, сценарии). Рисует автор в Figma (без ИИ), остальное Claude.
 - Примеры: `youtube/video-02-everest/` (длинный 8 мин), `youtube/kit/stories/everest_vertical.py` (вертикальный).
 
 ## Правила работы
