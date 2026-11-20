@@ -173,6 +173,57 @@ def ice(d, x, y):
         W.shape(d, W.wob(x - 80 + k * 80, y + 160 + k * 15, 18, 26, seed=83 + k), (200, 230, 250), 5)
 
 
+def chart(d, stage="up", x0=360, y0=220, w=1200, h=640):
+    """График акции: up — растёт, peak — на вершине, crash — обвал."""
+    d.line((x0, y0, x0, y0 + h), fill=INK, width=8)
+    d.line((x0, y0 + h, x0 + w, y0 + h), fill=INK, width=8)
+    up = [(x0 + 40, y0 + h - 40), (x0 + 200, y0 + h - 70), (x0 + 330, y0 + h - 160), (x0 + 470, y0 + h - 240),
+          (x0 + 600, y0 + h - 380), (x0 + 730, y0 + h - 470), (x0 + 850, y0 + 60)]
+    pts = up[:4] if stage == "start" else up
+    col = (40, 160, 70)
+    if stage == "crash":
+        pts = up + [(x0 + 930, y0 + 300), (x0 + 1010, y0 + h - 120), (x0 + 1120, y0 + h - 30)]
+        d.line(up, fill=col, width=14, joint="curve")
+        d.line(pts[len(up) - 1:], fill=RED, width=14, joint="curve")
+    else:
+        d.line(pts, fill=col, width=14, joint="curve")
+    if stage in ("peak", "crash"):
+        px, py = up[-1]
+        d.ellipse((px - 18, py - 18, px + 18, py + 18), fill=INK)
+
+
+def phone(d, x, y, s=1.0, title="", msgs=()):
+    """Телефон с чатом: msgs — строки сообщений."""
+    W.shape(d, [(x, y), (x + 360 * s, y), (x + 360 * s, y + 680 * s), (x, y + 680 * s)], (40, 44, 52), 8, seed=84)
+    d.rectangle((x + 22 * s, y + 60 * s, x + 338 * s, y + 620 * s), fill=(245, 245, 248))
+    if title:
+        d.text((x + 40 * s, y + 70 * s), title, font=F(CAPF, int(30 * s)), fill=(90, 90, 96))
+    for i, m in enumerate(msgs):
+        yy = y + (130 + i * 115) * s
+        W.shape(d, [(x + 40 * s, yy), (x + 320 * s, yy), (x + 320 * s, yy + 90 * s), (x + 40 * s, yy + 90 * s)], (210, 235, 255), 5, seed=85 + i)
+        d.text((x + 58 * s, yy + 22 * s), m, font=F(HAND, int(34 * s)), fill=INK)
+
+
+def gavel(d, x, y):
+    W.shape(d, [(x - 40, y + 60), (x + 260, y - 120), (x + 285, y - 85), (x - 15, y + 95)], (140, 90, 50), 8, seed=86)
+    W.shape(d, [(x + 200, y - 230), (x + 330, y - 150), (x + 280, y - 70), (x + 150, y - 150)], (110, 70, 40), 8, seed=87)
+    W.shape(d, [(x - 150, y + 170), (x + 150, y + 170), (x + 150, y + 220), (x - 150, y + 220)], (110, 70, 40), 8, seed=88)
+
+
+def coin(d, x, y, r=170, text="$GRASS"):
+    d.ellipse((x - r, y - r, x + r, y + r), fill=GOLD, outline=INK, width=9)
+    d.ellipse((x - r + 26, y - r + 26, x + r - 26, y + r - 26), outline=(200, 140, 30), width=6)
+    f = F(HAND, int(r * 0.42))
+    d.text((x - f.getlength(text) / 2, y - r * 0.28), text, font=f, fill=INK)
+
+
+def boiler(d, T):
+    """Комната волков с телефонами."""
+    for k, x in enumerate((360, 960, 1560)):
+        W.wolf(d, x, 1000, 0.82, "phone", talk=0.8 if int(T * 3 + k) % 2 == 0 else 0.0)
+        W.shape(d, [(x - 230, 820), (x + 230, 820), (x + 230, 880), (x - 230, 880)], (150, 100, 55), 7, seed=89 + k)
+
+
 def sparkle(d, x, y, r=22):
     d.polygon([(x, y - r), (x + r * 0.28, y - r * 0.28), (x + r, y), (x + r * 0.28, y + r * 0.28), (x, y + r),
                (x - r * 0.28, y + r * 0.28), (x - r, y), (x - r * 0.28, y - r * 0.28)], fill=(240, 200, 40))
@@ -212,6 +263,16 @@ def draw_item(d, it, T):
         stamp(d, it["x"], it["y"])
     elif k == "ice":
         ice(d, it.get("x", 1300), it.get("y", 560))
+    elif k == "chart":
+        chart(d, it.get("stage", "up"))
+    elif k == "phone":
+        phone(d, it.get("x", 780), it.get("y", 200), it.get("s", 1.0), it.get("title", ""), it.get("msgs", ()))
+    elif k == "gavel":
+        gavel(d, it.get("x", 900), it.get("y", 600))
+    elif k == "coin":
+        coin(d, it.get("x", 960), it.get("y", 520), it.get("r", 200), it.get("text", "$GRASS"))
+    elif k == "boiler":
+        boiler(d, T)
     elif k == "text":    # крупный рукописный текст (числа, суммы)
         f = F(HAND, it.get("size", 140))
         txt = it["text"]
@@ -237,7 +298,8 @@ class shot(kit.Shot):
         vis = tuple(T >= it.get("_in", -1) for it in self.items)
         cnt = tuple(it.get("n0", 0) + sum(1 for t in it.get("_at", []) if T >= t) * it.get("step", 1) for it in self.items if it["kind"] == "notes")
         has_wolf = self.kind in ("wolfface", "outro") or any(it["kind"] == "wolf" for it in self.items)
-        return (vis, cnt, mouth(T) if has_wolf else 0)
+        boil = int(T * 3) if any(it["kind"] == "boiler" for it in self.items) else 0
+        return (vis, cnt, mouth(T) if has_wolf else 0, boil)
 
     def draw(self, im, lt, dur, T):
         d = ImageDraw.Draw(im)
