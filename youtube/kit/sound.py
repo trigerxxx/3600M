@@ -267,4 +267,13 @@ def fx(name, seed=0, voice_fn=None):
         t = t_(0.25)
         x = (np.sin(2 * np.pi * 1320 * t) * (t < 0.08) + np.sin(2 * np.pi * 1760 * t) * (t >= 0.09)) * env(len(t), 0.003, 0.08, 1.0)
         return reverb(st(x), 0.4, 0.15) * 0.15
+    if name == "snip":
+        out = np.zeros(int(0.55 * SR))
+        for k, t0 in enumerate((0.0, 0.22)):
+            s_ = int(t0 * SR)
+            n = int(0.09 * SR)
+            tt = np.arange(n) / SR
+            ring = sum(np.sin(2 * np.pi * f * tt) * np.exp(-tt * 40) for f in (3100, 4700, 6900))
+            out[s_:s_ + n] += ring * 0.6 + hp(rng.standard_normal(n), 2500) * np.exp(-tt * 70)
+        return reverb(st(norm(out)), 0.4, 0.15) * 0.4
     raise KeyError(name)

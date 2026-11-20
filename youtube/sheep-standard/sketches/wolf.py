@@ -11,10 +11,11 @@ F = "/usr/share/fonts/opentype/inter/InterDisplay-Black.otf"
 GREY, GREY_D, GREY_L = (128, 132, 140), (92, 96, 104), (196, 199, 204)
 SUIT, SHIRT, TIE = (34, 44, 74), (255, 255, 255), (214, 40, 40)
 WOOL, FACE, SKIN = (255, 255, 255), (52, 46, 46), (246, 196, 186)
+BOIL = 0   # анимация: меняется каждые несколько кадров → линии «дрожат», как у рисованного мультика
 
 
 def wob(cx, cy, rx, ry, n=44, amp=0.035, seed=1, rot=0.0):
-    r = random.Random(seed)
+    r = random.Random(seed + BOIL * 97)
     ph = [r.uniform(0, 6.28) for _ in range(3)]
     pts = []
     for i in range(n):
@@ -26,7 +27,7 @@ def wob(cx, cy, rx, ry, n=44, amp=0.035, seed=1, rot=0.0):
 
 
 def jag(pts, seed=1, amp=3):
-    r = random.Random(seed)
+    r = random.Random(seed + BOIL * 131)
     out = []
     for (a, b) in zip(pts, pts[1:] + pts[:1]):
         for i in range(4):
@@ -42,7 +43,7 @@ def shape(d, pts, fill, w=9, seed=1):
 
 
 def line(d, a, b, w=8, seed=1):
-    r = random.Random(seed)
+    r = random.Random(seed + BOIL * 173)
     pts = [(a[0] + (b[0] - a[0]) * i / 8 + (r.uniform(-2.5, 2.5) if 0 < i < 8 else 0),
             a[1] + (b[1] - a[1]) * i / 8 + (r.uniform(-2.5, 2.5) if 0 < i < 8 else 0)) for i in range(9)]
     d.line(pts, fill=INK, width=w, joint="curve")
@@ -91,7 +92,8 @@ def sheep(d, cx, base, s=1.0, fleece=1.0, mood="calm", seed=3):
 
 
 # ---------------- волк ----------------
-def wolf(d, cx, base, s=1.0, pose="stand", seed=7):
+def wolf(d, cx, base, s=1.0, pose="stand", seed=7, talk=0.0, blink=False):
+    """talk 0..1 — насколько открыта пасть (анимация речи); blink — глаз закрыт."""
     # ноги и ботинки
     for lx in (-1, 1):
         shape(d, [(cx + lx * 18 * s, base - 200 * s), (cx + lx * 60 * s, base - 200 * s), (cx + lx * 58 * s, base - 20 * s), (cx + lx * 20 * s, base - 20 * s)], SUIT, 8, seed=lx + 3)
@@ -133,13 +135,23 @@ def wolf(d, cx, base, s=1.0, pose="stand", seed=7):
     snout = [(hx + 40 * s, hy - 30 * s), (hx + 190 * s, hy + 10 * s), (hx + 195 * s, hy + 45 * s), (hx + 40 * s, hy + 60 * s)]
     shape(d, snout, GREY_L, 9, seed=33)
     shape(d, wob(hx + 192 * s, hy + 18 * s, 18 * s, 14 * s, seed=34), INK, 4)   # нос
-    line(d, (hx + 90 * s, hy + 45 * s), (hx + 175 * s, hy + 40 * s), 6, seed=35)  # рот
+    if talk > 0.05:   # открытая пасть: тёмный рот и опущенная нижняя челюсть
+        o = talk
+        d.polygon([(hx + 60 * s, hy + 44 * s), (hx + 185 * s, hy + 38 * s), (hx + 176 * s, hy + (40 + 42 * o) * s), (hx + 70 * s, hy + (52 + 26 * o) * s)],
+                  fill=(90, 26, 32), outline=INK)
+        jaw = [(hx + 42 * s, hy + (52 + 26 * o) * s), (hx + 176 * s, hy + (40 + 42 * o) * s), (hx + 170 * s, hy + (58 + 42 * o) * s), (hx + 42 * s, hy + (74 + 26 * o) * s)]
+        shape(d, jaw, GREY_L, 8, seed=37)
+    else:
+        line(d, (hx + 90 * s, hy + 45 * s), (hx + 175 * s, hy + 40 * s), 6, seed=35)  # рот
     d.polygon([(hx + 150 * s, hy + 40 * s), (hx + 158 * s, hy + 56 * s), (hx + 165 * s, hy + 40 * s)], fill=WOOL, outline=INK)  # клык
     # глаз: полузакрытый, каменный
     ex_, ey_ = hx + 40 * s, hy - 25 * s
-    d.ellipse((ex_ - 14 * s, ey_ - 12 * s, ex_ + 14 * s, ey_ + 12 * s), fill=(255, 214, 80), outline=INK, width=5)
-    d.ellipse((ex_ - 4 * s, ey_ - 4 * s, ex_ + 4 * s, ey_ + 4 * s), fill=INK)
-    d.line((ex_ - 18 * s, ey_ - 4 * s, ex_ + 18 * s, ey_ - 4 * s), fill=GREY_D, width=int(12 * s))  # веко — скучающий взгляд
+    if blink:
+        d.line((ex_ - 16 * s, ey_ + 2 * s, ex_ + 16 * s, ey_ + 2 * s), fill=INK, width=max(4, int(5 * s)))
+    else:
+        d.ellipse((ex_ - 14 * s, ey_ - 12 * s, ex_ + 14 * s, ey_ + 12 * s), fill=(255, 214, 80), outline=INK, width=5)
+        d.ellipse((ex_ - 4 * s, ey_ - 4 * s, ex_ + 4 * s, ey_ + 4 * s), fill=INK)
+        d.line((ex_ - 18 * s, ey_ - 4 * s, ex_ + 18 * s, ey_ - 4 * s), fill=GREY_D, width=int(12 * s))  # веко — скучающий взгляд
     line(d, (ex_ - 20 * s, ey_ - 22 * s), (ex_ + 22 * s, ey_ - 18 * s), 6, seed=36)  # бровь
 
 
