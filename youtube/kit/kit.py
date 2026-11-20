@@ -4,6 +4,7 @@
 Запуск:  python3 kit.py stories/<история>.py            → готовый mp4
          python3 kit.py stories/<история>.py --check    → только контрольный лист кадров (быстро)
 Нужно: ffmpeg, Pillow, numpy, scipy, ключ ElevenLabs в Network secrets окружения."""
+import hashlib
 import importlib.util
 import math
 import os
@@ -355,9 +356,22 @@ def build_timeline(story_mod, bdir):
     clock = 0.0
     clean = [re.sub(r"\*", "", b["text"]) for b in blocks]
     for i, b in enumerate(blocks):
-        wav = os.path.join(bdir, f"b{i:02d}.wav")
+        # кэш по тексту: добавленные/переставленные блоки не требуют переозвучки остальных
+        key = hashlib.md5((st.get("voice", "brian") + "|" + clean[i]).encode()).hexdigest()[:12]
+        wav = os.path.join(bdir, f"v_{key}.wav")
+        old = os.path.join(bdir, f"b{i:02d}.wav")
+        if not os.path.exists(wav) and os.path.exists(old) and st.get("migrate_index_cache"):
+            os.replace(old, wav)
+            os.replace(old[:-4] + ".json", wav[:-4] + ".json")
         words = voice.say(clean[i], wav, st.get("voice", "brian"), clean[i - 1] if i else "",
                           clean[i + 1] if i + 1 < len(blocks) else "", speed=st.get("speed", 1.0))
+        tempo = st.get("tempo", 1.0)
+        if tempo != 1.0:   # замедлить/ускорить без переозвучки (высота голоса сохраняется)
+            tw = wav[:-4] + f"_t{tempo}.wav"
+            if not os.path.exists(tw):
+                subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", wav, "-af", f"atempo={tempo}", tw], check=True)
+            words = [(a / tempo, b2 / tempo, w) for a, b2, w in words]
+            wav = tw
         tokens = b["text"].split()
         if len(tokens) != len(words):
             print(f"  внимание: блок {i} — слов {len(tokens)} в тексте, {len(words)} в озвучке")

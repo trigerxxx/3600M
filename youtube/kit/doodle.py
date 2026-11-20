@@ -116,8 +116,11 @@ def stall(d, x, price=None, sign="GRASS"):
     for px in (x - 230, x + 230):
         W.shape(d, [(px - 14, 300), (px + 14, 300), (px + 14, GROUND), (px - 14, GROUND)], (150, 100, 55), 7, seed=int(px))
     W.shape(d, [(x - 270, 220), (x + 270, 220), (x + 270, 360), (x - 270, 360)], (200, 150, 85), 8, seed=74)
-    f = F(HAND, 96)
-    d.text((x - f.getlength(sign) / 2, 232), sign, font=f, fill=INK)
+    fs = 96
+    while F(HAND, fs).getlength(sign) > 500 and fs > 30:   # длинная вывеска — мельче, чтобы влезла
+        fs -= 4
+    f = F(HAND, fs)
+    d.text((x - f.getlength(sign) / 2, 290 - fs * 0.6), sign, font=f, fill=INK)
     W.shape(d, [(x - 260, 700), (x + 260, 700), (x + 260, 770), (x - 260, 770)], (180, 130, 70), 8, seed=75)
     for k in range(4):
         grass(d, x - 180 + k * 120, 700, 0.8, seed=k * 7)
