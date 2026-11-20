@@ -118,10 +118,10 @@ def wolf(d, cx, base, s=1.0, pose="stand", seed=7, talk=0.0, blink=False):
         shape(d, wob(cx - 108 * s, jt + 245 * s, 22 * s, 20 * s, seed=23), GREY, 7)
         shape(d, [(cx + 90 * s, jt + 50 * s), (cx + 290 * s, jt + 100 * s), (cx + 285 * s, jt + 140 * s), (cx + 85 * s, jt + 110 * s)], SUIT, 8, seed=24)
         shape(d, wob(cx + 310 * s, jt + 118 * s, 30 * s, 18 * s, seed=25), GREY, 7)
-    elif pose == "phone":                 # руки опущены прямо, телефон просто висит у уха (дорисовывается после головы)
-        for lx in (-1, 1):
-            shape(d, [(cx + lx * 92 * s, jt + 40 * s), (cx + lx * 128 * s, jt + 60 * s), (cx + lx * 120 * s, jt + 230 * s), (cx + lx * 92 * s, jt + 225 * s)], SUIT, 8, seed=20 + lx)
-            shape(d, wob(cx + lx * 108 * s, jt + 245 * s, 22 * s, 20 * s, seed=22 + lx), GREY, 7)
+    elif pose == "phone":                 # левая рука опущена; правая: плечо → локоть (предплечье и лапа с телефоном — после головы)
+        shape(d, [(cx - 92 * s, jt + 40 * s), (cx - 128 * s, jt + 60 * s), (cx - 120 * s, jt + 230 * s), (cx - 92 * s, jt + 225 * s)], SUIT, 8, seed=19)
+        shape(d, wob(cx - 108 * s, jt + 245 * s, 22 * s, 20 * s, seed=23), GREY, 7)
+        shape(d, [(cx + 88 * s, jt + 35 * s), (cx + 128 * s, jt + 55 * s), (cx + 150 * s, jt + 185 * s), (cx + 110 * s, jt + 200 * s)], SUIT, 8, seed=20)
     elif pose == "shears":
         shape(d, [(cx - 92 * s, jt + 40 * s), (cx - 128 * s, jt + 60 * s), (cx - 120 * s, jt + 230 * s), (cx - 92 * s, jt + 225 * s)], SUIT, 8, seed=19)
         shape(d, wob(cx - 108 * s, jt + 245 * s, 22 * s, 20 * s, seed=23), GREY, 7)
@@ -157,9 +157,13 @@ def wolf(d, cx, base, s=1.0, pose="stand", seed=7, talk=0.0, blink=False):
         d.ellipse((ex_ - 4 * s, ey_ - 4 * s, ex_ + 4 * s, ey_ + 4 * s), fill=INK)
         d.line((ex_ - 18 * s, ey_ - 4 * s, ex_ + 18 * s, ey_ - 4 * s), fill=GREY_D, width=int(12 * s))  # веко — скучающий взгляд
     line(d, (ex_ - 20 * s, ey_ - 22 * s), (ex_ + 22 * s, ey_ - 18 * s), 6, seed=36)  # бровь
-    if pose == "phone":                   # телефон у уха и лапа, держащая его
-        shape(d, [(hx - 70 * s, hy - 60 * s), (hx - 20 * s, hy - 70 * s), (hx - 5 * s, hy + 50 * s), (hx - 55 * s, hy + 60 * s)], (40, 44, 52), 6, seed=38)
-        d.rectangle((hx - 58 * s, hy - 50 * s, hx - 22 * s, hy + 38 * s), fill=(90, 150, 210))   # экран
+    if pose == "phone":                   # предплечье от локтя вверх к уху, лапа держит телефон
+        ex2, ey2 = cx + 130 * s, jt + 190 * s          # локоть
+        px, py = hx - 5 * s, hy + 45 * s               # лапа у щеки
+        shape(d, [(ex2 - 22 * s, ey2 + 8 * s), (ex2 + 24 * s, ey2 - 6 * s), (px + 28 * s, py + 8 * s), (px - 18 * s, py + 22 * s)], SUIT, 8, seed=40)
+        shape(d, [(px - 38 * s, py - 115 * s), (px + 8 * s, py - 122 * s), (px + 18 * s, py + 2 * s), (px - 28 * s, py + 8 * s)], (40, 44, 52), 6, seed=38)
+        d.rectangle((px - 28 * s, py - 105 * s, px + 2 * s, py - 12 * s), fill=(90, 150, 210))   # экран
+        shape(d, wob(px - 4 * s, py - 10 * s, 26 * s, 22 * s, seed=39), GREY, 7)               # лапа на телефоне
 
 
 def wool_note(d, x, y, s=1.0):
