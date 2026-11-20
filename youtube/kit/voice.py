@@ -12,6 +12,7 @@ VOICES = {
     "george": "JBFqnCBsd6RMkjVDRZzb",   # тёплый британский
     "bill": "pqHfZKP75CvOlQylNhV4",     # взрослый, документальный
     "sarah": "EXAVITQu4vr4xnSDxMaL",    # женский, мягкий
+    "eric": "cjVigY5qzO86Huf0OWal",     # гладкий американский «продавец» — ГОЛОС ВОЛКА (выбор автора)
 }
 
 

@@ -2,7 +2,7 @@
 from cartoon import sheep_shot, title_shot, wolf_shot, word_shot
 from kit import block
 
-STORY = dict(name="wolf-ep01-test", accent=(214, 40, 40), voice="pNInz6obpgDQGcFmaJgB", speed=1.0, end_hold=1.0)
+STORY = dict(name="wolf-ep01-test", accent=(214, 40, 40), voice="eric", speed=1.0, end_hold=1.0)
 
 BLOCKS = [
     block("Hello, sheep.",
