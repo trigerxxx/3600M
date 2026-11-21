@@ -227,6 +227,58 @@ def boiler(d, T):
         W.shape(d, [(x - 230, 820), (x + 230, 820), (x + 230, 880), (x - 230, 880)], (150, 100, 55), 7, seed=89 + k)
 
 
+def card(d, x, y, s=1.0, text="WOLF CARD", col=(242, 182, 48), cut=False):
+    """Кредитка: x, y — центр. cut=True — разрезана пополам."""
+    w, h = 430 * s, 270 * s
+    halves = [(-w / 2, w / 2, 0)] if not cut else [(-w / 2, -8 * s, -30 * s), (8 * s, w / 2, 30 * s)]
+    for a, b, dy in halves:
+        W.shape(d, [(x + a, y - h / 2 + dy), (x + b, y - h / 2 + dy), (x + b, y + h / 2 + dy), (x + a, y + h / 2 + dy)], col, max(4, int(8 * s)), seed=91)
+    W.shape(d, [(x - w / 2 + 40 * s, y - 50 * s), (x - w / 2 + 110 * s, y - 50 * s), (x - w / 2 + 110 * s, y + 5 * s), (x - w / 2 + 40 * s, y + 5 * s)], (220, 220, 225), max(3, int(5 * s)), seed=92)
+    if cut:
+        return
+    fs = int(44 * s)
+    while F(HAND, fs).getlength(text) > w - 60 * s and fs > 10:
+        fs -= 2
+    d.text((x - w / 2 + 40 * s, y + 40 * s), text, font=F(HAND, fs), fill=INK)
+    d.text((x - w / 2 + 40 * s, y + 85 * s), "**** 4242", font=F(CAPF, int(26 * s)), fill=INK)
+
+
+def bill(d, x, y, lines, s=1.0):
+    """Выписка по карте: lines — [(текст, красный?)]."""
+    W.shape(d, [(x, y), (x + 620 * s, y), (x + 620 * s, y + (150 + 105 * len(lines)) * s), (x, y + (150 + 105 * len(lines)) * s)], (255, 255, 255), max(4, int(8 * s)), seed=93)
+    d.text((x + 40 * s, y + 35 * s), "STATEMENT", font=F(CAPF, int(40 * s)), fill=(120, 120, 126))
+    for i, (t, red) in enumerate(lines):
+        yy = y + (115 + i * 105) * s
+        if red:
+            W.shape(d, [(x + 25 * s, yy - 10 * s), (x + 595 * s, yy - 10 * s), (x + 595 * s, yy + 85 * s), (x + 25 * s, yy + 85 * s)], (255, 225, 225), 4, seed=94 + i)
+        d.text((x + 45 * s, yy), t, font=F(HAND, int(58 * s)), fill=RED if red else INK)
+
+
+def snowball(d, x, y, r=200, text="DEBT"):
+    W.shape(d, W.wob(x, y, r, r * 0.95, seed=95), (240, 244, 250), max(5, int(r / 22)))
+    ns = 0.45 * r / 300
+    for k in range(max(2, int(r / 45))):
+        a = 0.5 + k * 2.4
+        if abs(np.sin(a)) < 0.45:     # не заходить на полосу текста
+            a += 0.9
+        note(d, x + np.cos(a) * r * 0.62 - 115 * ns, y + np.sin(a) * r * 0.62 - 58 * ns, ns)
+    fs = int(r * 0.45)
+    while F(HAND, fs).getlength(text) > r * 1.6 and fs > 10:
+        fs -= 2
+    f = F(HAND, fs)
+    d.text((x - f.getlength(text) / 2, y - fs * 0.62), text, font=f, fill=RED)
+
+
+def bag(d, x, y, s=1.0, text="SALE"):
+    W.shape(d, [(x - 150 * s, y - 180 * s), (x + 150 * s, y - 180 * s), (x + 175 * s, y + 180 * s), (x - 175 * s, y + 180 * s)], (230, 90, 90), max(4, int(8 * s)), seed=96)
+    d.arc((x - 80 * s, y - 280 * s, x + 80 * s, y - 100 * s), 180, 360, fill=INK, width=max(4, int(9 * s)))
+    fs = int(90 * s)
+    while F(HAND, fs).getlength(text) > 270 * s and fs > 10:
+        fs -= 2
+    f = F(HAND, fs)
+    d.text((x - f.getlength(text) / 2, y - 60 * s), text, font=f, fill=(255, 255, 255))
+
+
 def sparkle(d, x, y, r=22):
     d.polygon([(x, y - r), (x + r * 0.28, y - r * 0.28), (x + r, y), (x + r * 0.28, y + r * 0.28), (x, y + r),
                (x - r * 0.28, y + r * 0.28), (x - r, y), (x - r * 0.28, y - r * 0.28)], fill=(240, 200, 40))
@@ -276,6 +328,14 @@ def draw_item(d, it, T):
         coin(d, it.get("x", 960), it.get("y", 520), it.get("r", 200), it.get("text", "$GRASS"))
     elif k == "boiler":
         boiler(d, T)
+    elif k == "card":
+        card(d, it.get("x", 960), it.get("y", 540), it.get("s", 1.6), it.get("text", "WOLF CARD"), it.get("col", GOLD), it.get("cut", False))
+    elif k == "bill":
+        bill(d, it.get("x", 650), it.get("y", 180), it["lines"], it.get("s", 1.0))
+    elif k == "snowball":
+        snowball(d, it.get("x", 960), it.get("y", 560), it.get("r", 200), it.get("text", "DEBT"))
+    elif k == "bag":
+        bag(d, it.get("x", 960), it.get("y", 620), it.get("s", 1.4), it.get("text", "SALE"))
     elif k == "text":    # крупный рукописный текст (числа, суммы)
         f = F(HAND, it.get("size", 140))
         txt = it["text"]
