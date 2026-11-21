@@ -279,6 +279,36 @@ def bag(d, x, y, s=1.0, text="SALE"):
     d.text((x - f.getlength(text) / 2, y - 60 * s), text, font=f, fill=(255, 255, 255))
 
 
+def house(d, x, s=1.0, sign=None):
+    W.shape(d, [(x - 260 * s, GROUND), (x - 260 * s, GROUND - 330 * s), (x + 260 * s, GROUND - 330 * s), (x + 260 * s, GROUND)], (235, 215, 180), max(4, int(8 * s)), seed=97)
+    W.shape(d, [(x - 310 * s, GROUND - 320 * s), (x, GROUND - 560 * s), (x + 310 * s, GROUND - 320 * s)], RED, max(4, int(8 * s)), seed=98)
+    W.shape(d, [(x - 50 * s, GROUND), (x - 50 * s, GROUND - 170 * s), (x + 50 * s, GROUND - 170 * s), (x + 50 * s, GROUND)], (140, 90, 50), max(3, int(6 * s)), seed=99)
+    for wx in (-170, 110):
+        W.shape(d, [(x + wx * s, GROUND - 260 * s), (x + (wx + 70) * s, GROUND - 260 * s), (x + (wx + 70) * s, GROUND - 190 * s), (x + wx * s, GROUND - 190 * s)], (190, 225, 250), max(3, int(6 * s)), seed=100)
+    if sign:
+        tag(d, x - 120 * s, GROUND - 720 * s, sign)
+
+
+def car(d, x, s=1.0, rust=False):
+    col = (150, 120, 100) if rust else (60, 120, 210)
+    W.shape(d, [(x - 300 * s, GROUND - 60 * s), (x - 300 * s, GROUND - 170 * s), (x - 150 * s, GROUND - 180 * s), (x - 90 * s, GROUND - 290 * s),
+                (x + 140 * s, GROUND - 290 * s), (x + 210 * s, GROUND - 180 * s), (x + 300 * s, GROUND - 160 * s), (x + 300 * s, GROUND - 60 * s)], col, max(4, int(8 * s)), seed=101)
+    for wx in (-180, 180):
+        d.ellipse((x + (wx - 60) * s, GROUND - 120 * s, x + (wx + 60) * s, GROUND), fill=(50, 50, 55), outline=INK, width=max(3, int(7 * s)))
+    if rust:
+        for k in range(5):
+            d.ellipse((x + (-200 + k * 90) * s, GROUND - 150 * s, x + (-175 + k * 90) * s, GROUND - 125 * s), fill=(120, 70, 40))
+
+
+def tree(d, x, n=6, s=1.0):
+    """Шерстяное дерево: растёт само, n — сколько клочков шерсти (купюр) на ветках."""
+    W.shape(d, [(x - 35 * s, GROUND), (x - 25 * s, GROUND - 330 * s), (x + 25 * s, GROUND - 330 * s), (x + 35 * s, GROUND)], (140, 90, 50), max(4, int(8 * s)), seed=102)
+    W.shape(d, W.wob(x, GROUND - 470 * s, 260 * s, 200 * s, seed=103), (110, 185, 90), max(4, int(8 * s)))
+    pts = [(-150, -520), (40, -600), (-40, -430), (130, -470), (-190, -420), (180, -560), (-90, -610), (60, -380), (-140, -330), (150, -380), (0, -520), (-220, -500)]
+    for k in range(min(n, len(pts))):
+        W.shape(d, W.wob(x + pts[k][0] * s, GROUND + pts[k][1] * s, 42 * s, 32 * s, seed=104 + k), (255, 255, 255), max(3, int(6 * s)))
+
+
 def sparkle(d, x, y, r=22):
     d.polygon([(x, y - r), (x + r * 0.28, y - r * 0.28), (x + r, y), (x + r * 0.28, y + r * 0.28), (x, y + r),
                (x - r * 0.28, y + r * 0.28), (x - r, y), (x - r * 0.28, y - r * 0.28)], fill=(240, 200, 40))
@@ -336,6 +366,12 @@ def draw_item(d, it, T):
         snowball(d, it.get("x", 960), it.get("y", 560), it.get("r", 200), it.get("text", "DEBT"))
     elif k == "bag":
         bag(d, it.get("x", 960), it.get("y", 620), it.get("s", 1.4), it.get("text", "SALE"))
+    elif k == "house":
+        house(d, it.get("x", 960), it.get("s", 1.0), it.get("sign"))
+    elif k == "car":
+        car(d, it.get("x", 960), it.get("s", 1.0), it.get("rust", False))
+    elif k == "tree":
+        tree(d, it.get("x", 960), it.get("_n", it.get("n", 6)) if "at" in it else it.get("n", 6), it.get("s", 1.0))
     elif k == "text":    # крупный рукописный текст (числа, суммы)
         f = F(HAND, it.get("size", 140))
         txt = it["text"]
@@ -354,12 +390,12 @@ class shot(kit.Shot):
         for it in self.items:
             if "in" in it:
                 it["_in"] = block["start"] + kit.wtime(block, it["in"]) - 0.05
-            if it["kind"] == "notes":
+            if it["kind"] in ("notes", "tree"):
                 it["_at"] = [block["start"] + kit.wtime(block, w) - 0.05 for w in it.get("at", [])]
 
     def state(self, T):
         vis = tuple(T >= it.get("_in", -1) for it in self.items)
-        cnt = tuple(it.get("n0", 0) + sum(1 for t in it.get("_at", []) if T >= t) * it.get("step", 1) for it in self.items if it["kind"] == "notes")
+        cnt = tuple(it.get("n0", 0) + sum(1 for t in it.get("_at", []) if T >= t) * it.get("step", 1) for it in self.items if it["kind"] in ("notes", "tree"))
         has_wolf = self.kind in ("wolfface", "outro") or any(it["kind"] == "wolf" for it in self.items)
         boil = int(T * 3) if any(it["kind"] == "boiler" for it in self.items) else 0
         return (vis, cnt, mouth(T) if has_wolf else 0, boil)
@@ -398,7 +434,7 @@ class shot(kit.Shot):
             W.sheep(d, 1180, 960, 1.4, 0.0, "shock", seed=9)
         for it in self.items:
             if T >= it.get("_in", -1):
-                if it["kind"] == "notes":
+                if it["kind"] in ("notes", "tree"):
                     it["_n"] = it.get("n0", 0) + sum(1 for t in it.get("_at", []) if T >= t) * it.get("step", 1)
                 draw_item(d, it, T)
         if self.caption:
