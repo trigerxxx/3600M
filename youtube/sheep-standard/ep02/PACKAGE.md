@@ -14,30 +14,30 @@
 - **C — `thumb-C-gary-bought.png`:** лысый Гэри и Волк с телефоном, «GARY BOUGHT IT».
 Не использовать название, кадры, лицо актёра и шрифты фильма «The Wolf of Wall Street».
 
-## Описание
+## Описание (главы проверены: каждая ≥ 10 с, иначе YouTube их отключает)
 ```
 Sheep. Come closer. I've got a deal for you. 🐺📞
 Here's exactly how a pump and dump works — the phone call, the four tricks, the crash — the real story behind the famous scam, how it works today in group chats and memecoins, and a 3-second test that keeps your wool.
 
 0:00 I've got a deal for you
 0:28 Gary gets a call
-0:50 What is a stock?
-1:28 Penny stocks
-1:44 Step 1: buy quietly
-1:53 Step 2: the pump
-2:35 The sales script (4 tricks)
-3:07 Step 3: the dump
-3:31 FOMO: buy high, sell low
-4:00 Stop thinking
-4:20 London, 1720: the South Sea Bubble
-4:50 This actually happened: Stratton Oakmont
-5:35 Is this legal?
-5:55 They never left: modern pumps
+0:49 What is a stock?
+1:19 Penny stocks
+1:43 Buy quietly, then pump
+2:34 The sales script (4 tricks)
+3:07 The dump
+3:27 FOMO: buy high, sell low
+3:56 Stop thinking
+4:12 London, 1720: the South Sea Bubble
+4:46 The real story: Stratton Oakmont
+5:34 Is this legal?
+5:54 Modern pumps: chats and influencers
 6:39 A Wall Street legend
 7:06 The modern pump, step by step
 7:34 Real company or pump?
-8:03 The 3-second test
-8:31 Cheat sheet
+8:00 The 3-second test
+8:30 Cheat sheet
+8:50 Gary gets another call
 
 Sources:
 • SEC press release 2022-221: SEC charges eight social media influencers in $100 million stock manipulation scheme — https://www.sec.gov/news/press-release/2022-221

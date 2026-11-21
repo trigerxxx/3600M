@@ -15,23 +15,24 @@
 - **C — `thumb-C-i-am-the-bank.png`:** морда Волка крупно, «I AM THE BANK».
 Загрузить все 3 в Test & Compare.
 
-## Описание
+## Описание (главы проверены: каждая ≥ 10 с, иначе YouTube их отключает)
 ```
 Hello, sheep. 🐺
 Every year you lose wool — and nobody touches you. It's called inflation. Here's exactly how it works, who wins, and how to keep your wool.
 
 0:00 Hello, sheep
 0:16 Wool = wealth
-0:47 How money was invented
-0:51 The only formula you need
-1:06 Monetary inflation (the printer)
-1:43 Who gets new money first?
-2:42 First spender wins
-3:01 Hyperinflation
-3:22 Cost-push inflation
-3:29 Meanwhile, in the real world
-4:25 How to keep your wool
-4:50 Who holds the scissors?
+0:28 How money was invented
+0:46 The only formula you need
+1:04 The King prints money (monetary inflation)
+1:35 Who gets new money first?
+1:52 Prices double
+2:10 The hidden trick of inflation
+2:39 First spender wins + hyperinflation
+3:07 Cost-push inflation
+3:28 Meanwhile, in the real world
+4:08 How to keep your wool
+4:49 Who holds the scissors?
 
 Sources:
 • Germany 1923 hyperinflation — bread prices (various historical sources)
