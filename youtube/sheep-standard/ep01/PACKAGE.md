@@ -59,7 +59,7 @@ inflation explained, what is inflation, inflation for beginners, money explained
 - Плейлист: **Money Basics**
 - «Изменённый или синтетический контент»: нет (мультфильм, не реалистичное видео)
 
-## Shorts / TikTok (файлы в рабочей папке Claude)
+## Shorts / TikTok (файлы в этой папке)
 1. `short1-i-am-the-bank` (25 с) — крючок «WHO GETS NEW MONEY FIRST?» → «I am the bank. Lovely.»
 2. `short2-grandma` (26 с) — «INFLATION DOESN'T TAKE YOUR WOOL…» → бабушка → «Technically.» (Гэри-мем)
 3. `short3-real-world` (38 с) — «THIS ISN'T A CARTOON» → Германия 1923, Зимбабве 2008, США 2022
