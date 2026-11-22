@@ -96,7 +96,7 @@ def preview(paths, out):
     o.save(out)
 
 
-def wolf_portrait(d, cx, cy, s=1.0, lens=True, mood="smirk"):
+def wolf_portrait(d, cx, cy, s=1.0, lens=True, mood="smirk", glasses="on"):
     """Волк анфас для обложек: голова и плечи, тёмные очки с отражением графиков, хитрая ухмылка.
     cx, cy — центр головы. Никаких вытянутых рук — только портрет."""
     sh, wob, INK = W.shape, W.wob, (17, 17, 17)
@@ -110,6 +110,10 @@ def wolf_portrait(d, cx, cy, s=1.0, lens=True, mood="smirk"):
     sh(d, [P(-34, 232), P(34, 232), P(26, 268), P(-26, 268)], TIE, lw, seed=203)
     for k in (-1, 1):
         W.line(d, P(k * 95, 228), P(k * 30, 470), lw, seed=204 + k)
+        d.polygon([P(k * 95, 228), P(k * 150, 235), P(k * 60, 330)], fill=(250, 250, 250), outline=INK)   # воротник рубашки
+    sh(d, [P(-250, 380), P(-180, 372), P(-185, 400), P(-245, 405)], (250, 250, 250), max(3, int(5 * s)), seed=230)   # нагрудный платок
+    d.polygon([P(-240, 378), P(-215, 350), P(-200, 376)], fill=TIE, outline=INK)
+    d.line([P(200, 300), P(290, 360)], fill=(70, 84, 120), width=max(3, int(10 * s)))          # блик на плече
     # шея-мех
     sh(d, [P(-150, 120), P(150, 120), P(120, 250), P(-120, 250)], GREY_D, lw, seed=205)
     # уши
@@ -122,6 +126,12 @@ def wolf_portrait(d, cx, cy, s=1.0, lens=True, mood="smirk"):
     sh(d, [P(-70, -215), P(0, -228), P(70, -215), P(30, -60), P(0, -40), P(-30, -60)], GREY_D, max(3, int(5 * s)), seed=211)   # тёмная полоса на лбу
     # морда: вытянутая, светлая, сужается к подбородку
     sh(d, [P(-70, -20), P(70, -20), P(118, 95), P(98, 175), P(0, 212), P(-98, 175), P(-118, 95)], GREY_L, lw, seed=213)
+    for k in (-1, 1):                         # пряди меха и тени
+        for j in range(3):
+            d.line([P(k * (175 + j * 22), -40 + j * 40), P(k * (205 + j * 22), -10 + j * 40)], fill=GREY_D, width=max(2, int(6 * s)))
+        d.line([P(k * 80, 60), P(k * 104, 120)], fill=(170, 174, 182), width=max(3, int(10 * s)))
+        for j in range(3):                    # точки усов
+            d.ellipse([P(k * (52 + j * 16) - 4, 122 + (j % 2) * 10 - 4), P(k * (52 + j * 16) + 4, 122 + (j % 2) * 10 + 4)], fill=GREY_D)
     sh(d, [P(-50, 40), P(50, 40), P(38, 90), P(0, 104), P(-38, 90)], INK, max(3, int(5 * s)), seed=215)   # нос
     d.ellipse([P(-24, 50), P(-6, 62)], fill=(95, 98, 108))                                           # блик на носу
     # рот
@@ -136,19 +146,32 @@ def wolf_portrait(d, cx, cy, s=1.0, lens=True, mood="smirk"):
             d.polygon([P(x, 154), P(x + 10, 178), P(x + 20, 154)], fill=(255, 255, 255), outline=INK)
     elif mood == "shock":
         sh(d, wob(cx, cy + 165 * s, 30 * s, 28 * s, seed=218), (90, 26, 32), lw)
-    # тёмные очки
-    lens_box = [(-185, -78, -22, 18), (22, -78, 185, 18)]
+    # глаза (видны, если очки приспущены): жёлтые, хитрые, с полуприкрытым веком
+    if glasses == "down":
+        for k, open_ in ((-1, 0.55), (1, 0.8)):
+            ex, ey = k * 98, -88
+            d.ellipse([P(ex - 50, ey - 30), P(ex + 50, ey + 30)], fill=(255, 205, 60), outline=INK, width=lw)
+            d.ellipse([P(ex - 9, ey - 24), P(ex + 9, ey + 24)], fill=INK)                       # вертикальный зрачок
+            d.ellipse([P(ex - 18, ey - 18), P(ex - 8, ey - 8)], fill=(255, 255, 255))           # блик
+            lid = ey - 30 + 60 * (1 - open_)                                                   # тяжёлое верхнее веко
+            d.chord([P(ex - 54, ey - 40), P(ex + 54, lid * 2 - (ey - 40))], 180, 360, fill=GREY, outline=INK, width=lw)
+        lens_box = [(-172, -28, -30, 30), (30, -28, 172, 30)]
+        bridge_y, arm_y = 0, -10
+    else:
+        lens_box = [(-185, -78, -22, 18), (22, -78, 185, 18)]
+        bridge_y, arm_y = -45, -55
     for i, (x0, y0, x1, y1) in enumerate(lens_box):
-        d.rounded_rectangle([P(x0, y0), P(x1, y1)], radius=int(26 * s), fill=(18, 20, 30), outline=INK, width=lw)
+        d.rounded_rectangle([P(x0, y0), P(x1, y1)], radius=int(22 * s), fill=(18, 20, 30), outline=INK, width=lw)
         if lens:                                  # в стёклах отражается график: слева рост, справа обвал
             col = (40, 235, 120) if i == 0 else (255, 45, 70)
             pts = [(0.1, 0.8), (0.3, 0.65), (0.45, 0.72), (0.65, 0.4), (0.9, 0.2)] if i == 0 else [(0.1, 0.25), (0.3, 0.4), (0.5, 0.32), (0.7, 0.62), (0.9, 0.82)]
             pp = [P(x0 + (x1 - x0) * u, y0 + (y1 - y0) * v) for u, v in pts]
             d.line(pp, fill=col, width=max(3, int(8 * s)), joint="curve")
-        d.line([P(x0 + 20, y0 + 20), P(x0 + 55, y0 + 12)], fill=(150, 160, 180), width=max(2, int(5 * s)))   # блик
-    d.line([P(-22, -45), P(22, -45)], fill=INK, width=lw)                                    # перемычка
+        d.line([P(x0 + 18, y0 + 14), P(x0 + 50, y0 + 8)], fill=(150, 160, 180), width=max(2, int(5 * s)))   # блик
+    d.line([P(lens_box[0][2], bridge_y), P(lens_box[1][0], bridge_y)], fill=INK, width=lw)   # перемычка
     for k in (-1, 1):
-        d.line([P(k * 185, -55), P(k * 222, -70)], fill=INK, width=lw)                       # дужки
+        d.line([P(k * lens_box[1][2], arm_y), P(k * 222, arm_y - 30)], fill=INK, width=lw)    # дужки
     # брови: левая ровная, правая поднята — «самодовольный» взгляд
-    W.line(d, P(-170, -102), P(-40, -96), max(5, int(12 * s)), seed=219)
-    d.line([P(40, -112), P(110, -150), P(175, -128)], fill=INK, width=max(5, int(12 * s)), joint="curve")
+    by = -40 if glasses == "down" else 0
+    W.line(d, P(-165, -102 + by), P(-40, -92 + by), max(5, int(12 * s)), seed=219)
+    d.line([P(40, -112 + by), P(110, -158 + by), P(175, -132 + by)], fill=INK, width=max(5, int(12 * s)), joint="curve")
