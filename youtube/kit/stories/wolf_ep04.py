@@ -245,7 +245,7 @@ JANITOR = seq([
     ("A janitor beat Wall Street.", T("JANITOR\nBEATS WALL ST")),
     ("And around the same time, plenty of Wall Street executives with huge salaries borrowed big, spent big, and lost almost everything.", RICH("huge salaries"),
      ("borrowed", shot(dict(kind="chart", stage="crash"))), ("lost", shot(sheep(f=0.0, mood="shock", c="shades"), caption="everything"))),
-    ("High income doesn't make you rich.", TXT("INCOME IS NOT RICH", 200)),
+    ("High income doesn't make you rich.", TXT("INCOME IS NOT RICH", 150)),
     ("Owning does.", T("OWNING\nDOES")),
 ], mood="hope")
 
@@ -296,7 +296,7 @@ GARY_END = seq([
     ("He planted his last piece of wool.", shot(gary(500, s=1.4), tree(1350, n=1, s=0.9), caption="his last piece")),
     ("Hello, sheep.", FACE()),
     ("If you don't want to end up bald like Gary… subscribe.", shot(kind="outro")),
-    ("Gary's retirement plan is a lottery ticket.", shot(dict(kind="note", x=1420, y=700, s=0.9, text="LOTTO"), kind="outro", caption="gary's retirement plan: a lottery ticket.", cap=(560, 200))),
+    ("Gary's retirement plan is a lottery ticket.", shot(dict(kind="note", x=1420, y=700, s=0.9, text="LOTTO"), kind="outro", caption="gary's plan: a lottery ticket.", cap=(820, 200))),
 ], mood="hope", pause=1.6)
 
 LOOKS = seq([
