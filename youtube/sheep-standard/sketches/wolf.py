@@ -116,20 +116,23 @@ def wolf(d, cx, base, s=1.0, pose="stand", seed=7, talk=0.0, blink=False):
     elif pose == "present":
         shape(d, [(cx - 92 * s, jt + 40 * s), (cx - 128 * s, jt + 60 * s), (cx - 120 * s, jt + 230 * s), (cx - 92 * s, jt + 225 * s)], SUIT, 8, seed=19)
         shape(d, wob(cx - 108 * s, jt + 245 * s, 22 * s, 20 * s, seed=23), GREY, 7)
-        shape(d, [(cx + 90 * s, jt + 50 * s), (cx + 290 * s, jt + 100 * s), (cx + 285 * s, jt + 140 * s), (cx + 85 * s, jt + 110 * s)], SUIT, 8, seed=24)
-        shape(d, wob(cx + 310 * s, jt + 118 * s, 30 * s, 18 * s, seed=25), GREY, 7)
+        # рука опущена вниз-вперёд, лапа ладонью вверх («предлагает»), никогда не прямая горизонтальная рука
+        shape(d, [(cx + 88 * s, jt + 50 * s), (cx + 250 * s, jt + 190 * s), (cx + 232 * s, jt + 228 * s), (cx + 78 * s, jt + 110 * s)], SUIT, 8, seed=24)
+        shape(d, wob(cx + 262 * s, jt + 218 * s, 30 * s, 17 * s, seed=25), GREY, 7)
     elif pose == "phone":                 # ЛЕВАЯ рука Волка (справа у зрителя) опущена; ПРАВАЯ (слева у зрителя) держит телефон у правого уха
         shape(d, [(cx + 92 * s, jt + 40 * s), (cx + 128 * s, jt + 60 * s), (cx + 120 * s, jt + 230 * s), (cx + 92 * s, jt + 225 * s)], SUIT, 8, seed=21)
         shape(d, wob(cx + 108 * s, jt + 245 * s, 22 * s, 20 * s, seed=24), GREY, 7)
         shape(d, [(cx - 88 * s, jt + 35 * s), (cx - 128 * s, jt + 55 * s), (cx - 160 * s, jt + 180 * s), (cx - 118 * s, jt + 198 * s)], SUIT, 8, seed=20)
-    elif pose == "shears":
+    elif pose == "shears":                # рука согнута в локте, ножницы подняты у груди («щёлк-щёлк»), как у парикмахера
         shape(d, [(cx - 92 * s, jt + 40 * s), (cx - 128 * s, jt + 60 * s), (cx - 120 * s, jt + 230 * s), (cx - 92 * s, jt + 225 * s)], SUIT, 8, seed=19)
         shape(d, wob(cx - 108 * s, jt + 245 * s, 22 * s, 20 * s, seed=23), GREY, 7)
-        shape(d, [(cx + 90 * s, jt + 50 * s), (cx + 270 * s, jt + 40 * s), (cx + 275 * s, jt + 80 * s), (cx + 95 * s, jt + 105 * s)], SUIT, 8, seed=26)
-        hx2, hy2 = cx + 290 * s, jt + 58 * s
+        el = (cx + 140 * s, jt + 200 * s)                                  # локоть
+        shape(d, [(cx + 90 * s, jt + 40 * s), (cx + 128 * s, jt + 55 * s), (el[0] + 22 * s, el[1]), (el[0] - 22 * s, el[1] + 10 * s)], SUIT, 8, seed=26)
+        hx2, hy2 = cx + 175 * s, jt + 95 * s                               # лапа у груди
+        shape(d, [(el[0] - 20 * s, el[1] + 12 * s), (el[0] + 24 * s, el[1] - 4 * s), (hx2 + 22 * s, hy2 + 10 * s), (hx2 - 20 * s, hy2 + 18 * s)], SUIT, 8, seed=29)
+        for k in (-1, 1):   # ножницы для стрижки — лезвия вверх-вправо, слегка раскрыты
+            shape(d, [(hx2 - 4 * s, hy2 - 6 * s), (hx2 + 70 * s + k * 16 * s, hy2 - 150 * s), (hx2 + 82 * s + k * 16 * s, hy2 - 144 * s), (hx2 + 10 * s, hy2 + 2 * s)], (200, 205, 212), 6, seed=28 + k)
         shape(d, wob(hx2, hy2, 22 * s, 20 * s, seed=27), GREY, 7)
-        for k in (-1, 1):   # ножницы для стрижки
-            shape(d, [(hx2 + 10 * s, hy2 - 10 * s), (hx2 + 120 * s, hy2 - 60 * s + k * 18 * s), (hx2 + 125 * s, hy2 - 50 * s + k * 18 * s), (hx2 + 16 * s, hy2 + 4 * s)], (200, 205, 212), 6, seed=28 + k)
     # голова (в профиль вправо)
     hx, hy = cx + 10 * s, jt - 70 * s
     for ex, rot in ((-1, -0.25), (1, 0.15)):
