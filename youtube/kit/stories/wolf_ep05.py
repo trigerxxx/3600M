@@ -5,6 +5,8 @@
 - LendingTree (опрос 10–15 дек. 2025): 37% взяли праздничный долг, в среднем $1 223; 41% из них ещё платили за прошлый год; 48% родителей детей до 18 занимали.
 - Наш расчёт: $1 223 под 22%, минимум = 1% + проценты (не меньше $25) → ~90 мес. (7,5 лет), ~$1 175 процентов.
 - Joel Waldfogel, «The Deadweight Loss of Christmas», American Economic Review, 1993: получатели ценят подарки меньше их цены (оценки ~10–33%).
+- PNC Christmas Price Index 2025: $51 476,12 за набор, все 364 подарка — $218 542,98, золотые кольца +32,5%.
+- Красный Санта существовал до рекламы Coca-Cola (1931, Хэддон Санблом), реклама сделала образ популярным.
 - Flynn & Adams, «Money can't buy love», Journal of Experimental Social Psychology, 2009: дарители думают, что дорогой подарок ценят больше; получатели — нет.
 """
 from doodle import seq, shot
@@ -241,4 +243,62 @@ GARY_END = seq([
     ("Gary knitted the sweaters from his own wool.", shot(gift(1500, 820, 0.45), kind="outro", caption="from his own wool.", cap=(820, 200))),
 ], mood="hope", pause=1.6)
 
-BLOCKS = [HOOK, NUMBERS, GARY_XMAS, CREEP, FAKE_SALE, SHIPPING, TIMER, GIFT_CARDS, BNPL, WHY, PRESSURE, RULE, HOW, RECAP, GARY_END]
+PRICE_INDEX = seq([
+    ("Here's a fun one.", FACE("fun one")),
+    ("You know the song, The Twelve Days of Christmas?", T("THE 12 DAYS\nOF CHRISTMAS")),
+    ("A partridge in a pear tree. Five gold rings. All that.", shot(dict(kind="tree", x=960, n=0, s=1.0), caption="a pear tree"), ("five", TXT("5 GOLD RINGS", 200))),
+    ("A real bank calculates what those gifts would cost. Every single year.", shot(store(sign="A REAL BANK"), caption="every year")),
+    ("It's called the PNC Christmas Price Index.", TXT("CHRISTMAS PRICE INDEX", 120)),
+    ("In twenty twenty-five, one set of all twelve gifts cost about fifty-one thousand dollars.", TXT("$51,476", 280, RED, cap="one set, 2025")),
+    ("The gold rings alone went up more than thirty percent in one year.", TXT("+32%", 330, RED, cap="gold rings")),
+    ("And if you buy every gift every time the song repeats it?", FACE()),
+    ("Three hundred and sixty-four presents.", TXT("364 GIFTS", 260)),
+    ("About two hundred and eighteen thousand dollars.", TXT("$218,543", 260, RED)),
+    ("True love is expensive.", T("TRUE LOVE\nIS EXPENSIVE")),
+    ("Gary's true love got a card.", MEME()),
+], mood="calm")
+
+SANTA = seq([
+    ("And speaking of selling things.", shot(wolf(960))),
+    ("You've probably heard that Coca-Cola invented the red Santa.", TXT("RED SANTA?", 240, RED)),
+    ("It's a great story.", FACE("great story")),
+    ("It's also not quite true.", FACE("not true")),
+    ("Santa was already drawn in red long before.", TXT("RED BEFORE", 230, RED)),
+    ("But Coke's ads in the nineteen thirties made that jolly Santa famous everywhere.", TXT("1930s ADS", 230)),
+    ("Think about that.", FACE()),
+    ("The face of Christmas got famous selling a drink.", T("SANTA SOLD\nA DRINK")),
+    ("Christmas has been a sales pitch for a very long time.", shot(store(), caption="a very long time")),
+], mood="calm")
+
+SENSES = seq([
+    ("Now walk into my store in December.", shot(store())),
+    ("Christmas music. Cinnamon smell. Warm lights.", TXT("MUSIC", 260), ("cinnamon", TXT("CINNAMON", 240)), ("warm", TXT("WARM LIGHTS", 210))),
+    ("You think it's decoration.", FACE("decoration?")),
+    ("It's engineering.", T("ENGINEERING")),
+    ("Researchers have found that music and scent can change how shoppers feel about a store.", TXT("THE RESEARCH", 220), ("shoppers", shot(*herd(), caption="feel cozy"))),
+    ("Cozy sheep stay longer.", shot(sheep(c="scarf"), caption="stay longer")),
+    ("Sheep who stay longer spend more.", shot(dict(kind="notes", x=320, y=880, n0=6, step=6, at=["stay", "longer", "spend", "more"], cols=6, s=1.3))),
+    ("I don't play carols because I love Christmas.", FACE()),
+    ("I play them because I love your wool.", FACE("i love your wool")),
+], mood="calm")
+
+KIDS = seq([
+    ("And if you have kids?", shot(sheep(500, s=1.4), sheep(1200, s=0.9), caption="parents")),
+    ("Almost half of parents in that survey borrowed money for the holidays.", TXT("48% OF PARENTS", 190, RED, cap="borrowed")),
+    ("Because every ad tells your kid what Christmas should look like.", shot(chat("NEW TOY!!", "everyone has it", "ask your parents"))),
+    ("Here's the secret no ad will tell you.", FACE("the secret")),
+    ("Kids rarely remember what they got.", TXT("WHAT THEY GOT?", 200)),
+    ("They remember how it felt.", T("HOW IT\nFELT")),
+    ("A parent who isn't stressed about money is a pretty great gift.", shot(sheep(500, s=1.4), sheep(1200, s=0.9), caption="best gift")),
+], mood="hope")
+
+TALK = seq([
+    ("And the hardest part?", FACE()),
+    ("Telling your family you're spending less this year.", shot(*herd(), caption="the talk")),
+    ("Here's a script. Steal it.", T("STEAL THIS\nSCRIPT")),
+    ("This year, I'm keeping Christmas simple. Can we do a Secret Santa?", shot(chat("keeping it simple", "secret santa?", "one gift each?", title="Family Chat"))),
+    ("You'll be surprised.", FACE("surprised")),
+    ("Half the family was waiting for someone else to say it first.", shot(*herd(mood="shock"), caption="finally!")),
+], mood="hope")
+
+BLOCKS = [HOOK, NUMBERS, GARY_XMAS, PRICE_INDEX, CREEP, FAKE_SALE, SHIPPING, TIMER, SENSES, GIFT_CARDS, BNPL, SANTA, WHY, PRESSURE, KIDS, RULE, HOW, TALK, RECAP, GARY_END]
