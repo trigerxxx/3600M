@@ -309,6 +309,17 @@ def tree(d, x, n=6, s=1.0):
         W.shape(d, W.wob(x + pts[k][0] * s, GROUND + pts[k][1] * s, 42 * s, 32 * s, seed=104 + k), (255, 255, 255), max(3, int(6 * s)))
 
 
+def gift(d, x, y, s=1.0, col=(214, 40, 40), label=None):
+    """Подарок: коробка с бантом."""
+    W.shape(d, [(x - 150 * s, y - 120 * s), (x + 150 * s, y - 120 * s), (x + 150 * s, y + 150 * s), (x - 150 * s, y + 150 * s)], col, max(4, int(8 * s)), seed=105)
+    W.shape(d, [(x - 170 * s, y - 180 * s), (x + 170 * s, y - 180 * s), (x + 170 * s, y - 110 * s), (x - 170 * s, y - 110 * s)], col, max(4, int(8 * s)), seed=106)
+    d.rectangle((x - 22 * s, y - 180 * s, x + 22 * s, y + 150 * s), fill=GOLD)
+    for sx in (-1, 1):
+        W.shape(d, W.wob(x + sx * 60 * s, y - 220 * s, 60 * s, 38 * s, seed=107 + sx), GOLD, max(3, int(6 * s)))
+    if label:
+        tag(d, x - 110 * s, y + 170 * s, label)
+
+
 def sparkle(d, x, y, r=22):
     d.polygon([(x, y - r), (x + r * 0.28, y - r * 0.28), (x + r, y), (x + r * 0.28, y + r * 0.28), (x, y + r),
                (x - r * 0.28, y + r * 0.28), (x - r, y), (x - r * 0.28, y - r * 0.28)], fill=(240, 200, 40))
@@ -372,6 +383,8 @@ def draw_item(d, it, T):
         car(d, it.get("x", 960), it.get("s", 1.0), it.get("rust", False))
     elif k == "tree":
         tree(d, it.get("x", 960), it.get("_n", it.get("n", 6)) if "at" in it else it.get("n", 6), it.get("s", 1.0))
+    elif k == "gift":
+        gift(d, it.get("x", 960), it.get("y", 600), it.get("s", 1.0), it.get("col", RED), it.get("label"))
     elif k == "text":    # крупный рукописный текст (числа, суммы)
         f = F(HAND, it.get("size", 140))
         txt = it["text"]
