@@ -73,10 +73,22 @@ def neon_chart(im, pts, col, width=16, fill=True, label=None, arrow=True):
         ImageDraw.Draw(im).text((lx, ly), txt, font=F(44), fill=col + (255,), stroke_width=6, stroke_fill=(8, 8, 12))
 
 
-def hero(im, fn, rim):
+def hero(im, fn, rim, volume=True):
+    """Герой со светящимся контуром и тенью. volume=True — объём: свет сверху-слева, затемнение к краям."""
     big = Image.new("RGBA", (Wd * 2, Hd * 2), (0, 0, 0, 0)); fn(ImageDraw.Draw(big), 2)
     lay = big.resize((Wd, Hd), Image.LANCZOS); a = lay.getchannel("A")
-    rgb = np.asarray(lay.convert("RGB"), np.float32) * np.linspace(1.1, 0.82, Hd)[:, None, None]
+    rgb = np.asarray(lay.convert("RGB"), np.float32)
+    if volume:
+        bb = a.getbbox() or (0, 0, Wd, Hd)
+        y, x = np.mgrid[0:Hd, 0:Wd].astype(np.float32)
+        lx, ly = bb[0] + (bb[2] - bb[0]) * 0.3, bb[1] + (bb[3] - bb[1]) * 0.15           # «лампа» сверху-слева
+        r = np.sqrt(((x - lx) / (bb[2] - bb[0] + 1)) ** 2 + ((y - ly) / (bb[3] - bb[1] + 1)) ** 2)
+        light = np.clip(1.28 - r * 0.75, 0.68, 1.28)
+        inner = np.asarray(a.filter(ImageFilter.GaussianBlur(22)), np.float32) / 255     # к краям темнее
+        edge = 0.72 + 0.28 * np.clip((inner - 0.35) / 0.5, 0, 1)
+        rgb = rgb * (light * edge)[..., None]
+    else:
+        rgb = rgb * np.linspace(1.1, 0.82, Hd)[:, None, None]
     sh_ = Image.fromarray(rgb.clip(0, 255).astype(np.uint8)).convert("RGBA"); sh_.putalpha(a)
     gl = Image.new("RGBA", (Wd, Hd), rim + (0,)); gl.putalpha(a.filter(ImageFilter.MaxFilter(9)).filter(ImageFilter.GaussianBlur(14)).point(lambda v: int(v * 0.9)))
     shadow = Image.new("RGBA", (Wd, Hd), (0, 0, 0, 0)); shadow.putalpha(a.filter(ImageFilter.GaussianBlur(18)).point(lambda v: int(v * 0.7)))
