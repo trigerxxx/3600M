@@ -108,7 +108,8 @@ def preview(paths, out):
     o.save(out)
 
 
-def wolf_portrait(d, cx, cy, s=1.0, lens=True, mood="smirk", glasses="on"):
+def wolf_portrait(d, cx, cy, s=1.0, lens=True, mood="smirk", glasses="on", hat=None, monocle=False, chain=False):
+    """glasses: on / down / none. hat: None / top (цилиндр). monocle, chain — реквизит «богача»."""
     """Волк анфас для обложек: голова и плечи, тёмные очки с отражением графиков, хитрая ухмылка.
     cx, cy — центр головы. Никаких вытянутых рук — только портрет."""
     sh, wob, INK = W.shape, W.wob, (17, 17, 17)
@@ -159,15 +160,15 @@ def wolf_portrait(d, cx, cy, s=1.0, lens=True, mood="smirk", glasses="on"):
     elif mood == "shock":
         sh(d, wob(cx, cy + 165 * s, 30 * s, 28 * s, seed=218), (90, 26, 32), lw)
     # глаза (видны, если очки приспущены): жёлтые, хитрые, с полуприкрытым веком
-    if glasses == "down":
+    if glasses in ("down", "none"):
         for k, open_ in ((-1, 0.55), (1, 0.8)):
-            ex, ey = k * 98, -88
+            ex, ey = k * 98, (-88 if glasses == "down" else -45)
             d.ellipse([P(ex - 50, ey - 30), P(ex + 50, ey + 30)], fill=(255, 205, 60), outline=INK, width=lw)
             d.ellipse([P(ex - 9, ey - 24), P(ex + 9, ey + 24)], fill=INK)                       # вертикальный зрачок
             d.ellipse([P(ex - 18, ey - 18), P(ex - 8, ey - 8)], fill=(255, 255, 255))           # блик
             lid = ey - 30 + 60 * (1 - open_)                                                   # тяжёлое верхнее веко
             d.chord([P(ex - 54, ey - 40), P(ex + 54, lid * 2 - (ey - 40))], 180, 360, fill=GREY, outline=INK, width=lw)
-        lens_box = [(-172, -28, -30, 30), (30, -28, 172, 30)]
+        lens_box = [(-172, -28, -30, 30), (30, -28, 172, 30)] if glasses == "down" else []
         bridge_y, arm_y = 0, -10
     else:
         lens_box = [(-185, -78, -22, 18), (22, -78, 185, 18)]
@@ -180,13 +181,32 @@ def wolf_portrait(d, cx, cy, s=1.0, lens=True, mood="smirk", glasses="on"):
             pp = [P(x0 + (x1 - x0) * u, y0 + (y1 - y0) * v) for u, v in pts]
             d.line(pp, fill=col, width=max(3, int(8 * s)), joint="curve")
         d.line([P(x0 + 18, y0 + 14), P(x0 + 50, y0 + 8)], fill=(150, 160, 180), width=max(2, int(5 * s)))   # блик
-    d.line([P(lens_box[0][2], bridge_y), P(lens_box[1][0], bridge_y)], fill=INK, width=lw)   # перемычка
-    for k in (-1, 1):
-        d.line([P(k * lens_box[1][2], arm_y), P(k * 222, arm_y - 30)], fill=INK, width=lw)    # дужки
+    if lens_box:
+        d.line([P(lens_box[0][2], bridge_y), P(lens_box[1][0], bridge_y)], fill=INK, width=lw)   # перемычка
+        for k in (-1, 1):
+            d.line([P(k * lens_box[1][2], arm_y), P(k * 222, arm_y - 30)], fill=INK, width=lw)    # дужки
     # брови: левая ровная, правая поднята — «самодовольный» взгляд
-    by = -40 if glasses == "down" else 0
+    by = -40 if glasses == "down" else (5 if glasses == "none" else 0)
     W.line(d, P(-165, -102 + by), P(-40, -92 + by), max(5, int(12 * s)), seed=219)
     d.line([P(40, -112 + by), P(110, -158 + by), P(175, -132 + by)], fill=INK, width=max(5, int(12 * s)), joint="curve")
+
+    GOLD_ = (242, 182, 48)
+    if monocle:                                  # монокль на правом глазу + цепочка к лацкану
+        ex, ey = 98, (-88 if glasses == "down" else -45)
+        d.ellipse([P(ex - 62, ey - 62), P(ex + 62, ey + 62)], outline=GOLD_, width=max(4, int(12 * s)))
+        d.ellipse([P(ex - 70, ey - 70), P(ex + 70, ey + 70)], outline=INK, width=max(2, int(5 * s)))
+        d.line([P(ex + 50, ey + 50), P(150, 120), P(175, 200), P(120, 300)], fill=GOLD_, width=max(3, int(7 * s)), joint="curve")
+    if chain:                                    # золотая цепь на груди
+        pts = [P(x, 255 + 0.0016 * x * x) for x in range(-260, 261, 20)]
+        d.line(pts, fill=INK, width=max(6, int(18 * s)), joint="curve")
+        d.line(pts, fill=GOLD_, width=max(4, int(11 * s)), joint="curve")
+        d.ellipse([P(-42, 300), P(42, 384)], fill=GOLD_, outline=INK, width=lw)
+        d.text(P(0, 342), "$", font=F(int(60 * s)), fill=INK, anchor="mm")
+    if hat == "top":                             # цилиндр, чуть набок
+        sh(d, [P(-260, -175), P(250, -205), P(256, -160), P(-254, -130)], (24, 24, 30), lw, seed=250)   # поля
+        sh(d, [P(-170, -170), P(160, -196), P(150, -390), P(-160, -372)], (24, 24, 30), lw, seed=251)   # тулья
+        sh(d, [P(-166, -235), P(156, -258), P(158, -210), P(-168, -186)], (180, 30, 40), max(3, int(6 * s)), seed=252)  # лента
+        d.line([P(-120, -360), P(-110, -260)], fill=(70, 70, 82), width=max(3, int(12 * s)))   # блик
 
 
 def wolf_holds_bill(d, cx, cy, s=1.0, text="$100", mood="smirk", glasses="down"):
