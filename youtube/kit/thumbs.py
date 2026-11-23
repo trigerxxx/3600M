@@ -108,7 +108,7 @@ def preview(paths, out):
     o.save(out)
 
 
-def wolf_portrait(d, cx, cy, s=1.0, lens=True, mood="smirk", glasses="on", hat=None, monocle=False, chain=False):
+def wolf_portrait(d, cx, cy, s=1.0, lens=True, mood="smirk", glasses="on", hat=None, monocle=False, chain=False, outfit="suit"):
     """glasses: on / down / none. hat: None / top (цилиндр). monocle, chain — реквизит «богача»."""
     """Волк анфас для обложек: голова и плечи, тёмные очки с отражением графиков, хитрая ухмылка.
     cx, cy — центр головы. Никаких вытянутых рук — только портрет."""
@@ -116,17 +116,28 @@ def wolf_portrait(d, cx, cy, s=1.0, lens=True, mood="smirk", glasses="on", hat=N
     GREY, GREY_L, GREY_D, SUIT, TIE = (128, 132, 140), (198, 201, 206), (92, 96, 106), (34, 44, 74), (214, 40, 40)
     P = lambda x, y: (cx + x * s, cy + y * s)
     lw = max(4, int(9 * s))
-    # плечи и пиджак
-    sh(d, [P(-440, 1000), P(-360, 330), P(-260, 250), P(-90, 225), P(90, 225), P(260, 250), P(360, 330), P(440, 1000)], SUIT, lw, seed=201)   # пиджак уходит за низ кадра
-    d.polygon([P(-95, 228), P(95, 228), P(0, 470)], fill=(250, 250, 250), outline=INK)
-    sh(d, [P(-30, 250), P(30, 250), P(42, 430), P(0, 480), P(-42, 430)], TIE, lw, seed=202)
-    sh(d, [P(-34, 232), P(34, 232), P(26, 268), P(-26, 268)], TIE, lw, seed=203)
-    for k in (-1, 1):
-        W.line(d, P(k * 95, 228), P(k * 30, 470), lw, seed=204 + k)
-        d.polygon([P(k * 95, 228), P(k * 150, 235), P(k * 60, 330)], fill=(250, 250, 250), outline=INK)   # воротник рубашки
-    sh(d, [P(-250, 380), P(-180, 372), P(-185, 400), P(-245, 405)], (250, 250, 250), max(3, int(5 * s)), seed=230)   # нагрудный платок
-    d.polygon([P(-240, 378), P(-215, 350), P(-200, 376)], fill=TIE, outline=INK)
-    d.line([P(200, 300), P(290, 360)], fill=(70, 84, 120), width=max(3, int(10 * s)))          # блик на плече
+    if outfit == "leather":                      # чёрная кожаная куртка поверх чёрной футболки
+        LEATHER, TEE = (30, 30, 34), (48, 48, 54)
+        sh(d, [P(-440, 1000), P(-360, 330), P(-260, 250), P(-90, 225), P(90, 225), P(260, 250), P(360, 330), P(440, 1000)], LEATHER, lw, seed=201)
+        sh(d, [P(-115, 228), P(115, 228), P(70, 1000), P(-70, 1000)], TEE, lw, seed=260)                    # футболка
+        d.arc([P(-90, 190), P(90, 290)], 20, 160, fill=INK, width=lw)                                       # круглый ворот
+        for k in (-1, 1):                                                                                   # широкий кожаный воротник
+            sh(d, [P(k * 95, 228), P(k * 250, 255), P(k * 210, 420), P(k * 120, 470)], (42, 42, 48), lw, seed=261 + k)
+            d.line([P(k * 125, 480), P(k * 160, 1000)], fill=(150, 150, 160), width=max(3, int(7 * s)))     # молния
+            d.line([P(k * 300, 330), P(k * 360, 560)], fill=(95, 95, 108), width=max(4, int(14 * s)))      # блики кожи
+            d.line([P(k * 215, 290), P(k * 230, 380)], fill=(85, 85, 98), width=max(3, int(9 * s)))
+    else:
+        # плечи и пиджак
+        sh(d, [P(-440, 1000), P(-360, 330), P(-260, 250), P(-90, 225), P(90, 225), P(260, 250), P(360, 330), P(440, 1000)], SUIT, lw, seed=201)   # пиджак уходит за низ кадра
+        d.polygon([P(-95, 228), P(95, 228), P(0, 470)], fill=(250, 250, 250), outline=INK)
+        sh(d, [P(-30, 250), P(30, 250), P(42, 430), P(0, 480), P(-42, 430)], TIE, lw, seed=202)
+        sh(d, [P(-34, 232), P(34, 232), P(26, 268), P(-26, 268)], TIE, lw, seed=203)
+        for k in (-1, 1):
+            W.line(d, P(k * 95, 228), P(k * 30, 470), lw, seed=204 + k)
+            d.polygon([P(k * 95, 228), P(k * 150, 235), P(k * 60, 330)], fill=(250, 250, 250), outline=INK)   # воротник рубашки
+        sh(d, [P(-250, 380), P(-180, 372), P(-185, 400), P(-245, 405)], (250, 250, 250), max(3, int(5 * s)), seed=230)   # нагрудный платок
+        d.polygon([P(-240, 378), P(-215, 350), P(-200, 376)], fill=TIE, outline=INK)
+        d.line([P(200, 300), P(290, 360)], fill=(70, 84, 120), width=max(3, int(10 * s)))          # блик на плече
     # шея-мех
     sh(d, [P(-150, 120), P(150, 120), P(120, 250), P(-120, 250)], GREY_D, lw, seed=205)
     # уши
@@ -208,6 +219,22 @@ def wolf_portrait(d, cx, cy, s=1.0, lens=True, mood="smirk", glasses="on", hat=N
         sh(d, [P(-166, -235), P(156, -258), P(158, -210), P(-168, -186)], (180, 30, 40), max(3, int(6 * s)), seed=252)  # лента
         d.line([P(-120, -360), P(-110, -260)], fill=(70, 70, 82), width=max(3, int(12 * s)))   # блик
 
+
+
+def ai_bubble(d, cx, cy, r, s=1.0):
+    """Мыльный пузырь «AI» с иглой."""
+    d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=(120, 200, 255), outline=(230, 245, 255), width=max(4, int(10 * s)))
+    d.ellipse([cx - r * 0.82, cy - r * 0.82, cx + r * 0.82, cy + r * 0.82], outline=(200, 160, 255), width=max(3, int(6 * s)))
+    d.arc([cx - r * 0.7, cy - r * 0.75, cx + r * 0.2, cy + r * 0.1], 190, 260, fill=(255, 255, 255), width=max(4, int(14 * s)))
+    d.text((cx, cy + r * 0.05), "AI", font=F(int(r * 0.8)), fill=(255, 255, 255), anchor="mm", stroke_width=max(3, int(8 * s)), stroke_fill=(40, 60, 140))
+    tx, ty = cx + r * 0.72, cy - r * 0.72                                       # кончик иглы касается пузыря сверху-справа
+    ex, ey = cx + r * 1.55, cy - r * 1.45
+    d.line([(ex, ey), (tx, ty)], fill=(215, 220, 230), width=max(5, int(12 * s)))
+    d.ellipse([ex - r * 0.1, ey - r * 0.1, ex + r * 0.1, ey + r * 0.1], fill=(214, 40, 40), outline=(17, 17, 17), width=max(2, int(4 * s)))
+    for k in range(5):                                                          # «искры» в точке прокола
+        import math
+        a_ = -2.4 + k * 0.5
+        d.line([(tx + math.cos(a_) * r * 0.12, ty + math.sin(a_) * r * 0.12), (tx + math.cos(a_) * r * 0.28, ty + math.sin(a_) * r * 0.28)], fill=(255, 230, 90), width=max(3, int(7 * s)))
 
 def wolf_holds_bill(d, cx, cy, s=1.0, text="$100", mood="smirk", glasses="down"):
     """Волк анфас держит купюру двумя лапами перед собой (отсылка к «показывает купюру в камеру»)."""
