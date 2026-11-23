@@ -171,7 +171,7 @@ def wolf_portrait(d, cx, cy, s=1.0, lens=True, mood="smirk", glasses="on", hat=N
     elif mood == "shock":
         sh(d, wob(cx, cy + 165 * s, 30 * s, 28 * s, seed=218), (90, 26, 32), lw)
     # глаза (видны, если очки приспущены): жёлтые, хитрые, с полуприкрытым веком
-    if glasses in ("down", "none"):
+    if glasses in ("down", "none", "clear"):
         for k, open_ in ((-1, 0.55), (1, 0.8)):
             ex, ey = k * 98, (-88 if glasses == "down" else -45)
             d.ellipse([P(ex - 50, ey - 30), P(ex + 50, ey + 30)], fill=(255, 205, 60), outline=INK, width=lw)
@@ -192,12 +192,21 @@ def wolf_portrait(d, cx, cy, s=1.0, lens=True, mood="smirk", glasses="on", hat=N
             pp = [P(x0 + (x1 - x0) * u, y0 + (y1 - y0) * v) for u, v in pts]
             d.line(pp, fill=col, width=max(3, int(8 * s)), joint="curve")
         d.line([P(x0 + 18, y0 + 14), P(x0 + 50, y0 + 8)], fill=(150, 160, 180), width=max(2, int(5 * s)))   # блик
+    if glasses == "clear":                       # прозрачные очки в тонкой оправе: глаза видны
+        for k in (-1, 1):
+            x0, x1 = (-178, -20) if k < 0 else (20, 178)
+            d.rounded_rectangle([P(x0, -92), P(x1, 2)], radius=int(20 * s), outline=INK, width=max(4, int(8 * s)))
+            d.line([P(x0 + 22, -76), P(x0 + 58, -84)], fill=(230, 240, 255), width=max(2, int(6 * s)))      # блики на стекле
+            d.line([P(x1 - 40, -10), P(x1 - 14, -16)], fill=(230, 240, 255), width=max(2, int(5 * s)))
+        d.line([P(-20, -50), P(20, -50)], fill=INK, width=max(4, int(8 * s)))                              # перемычка
+        for k in (-1, 1):
+            d.line([P(k * 178, -60), P(k * 222, -80)], fill=INK, width=max(4, int(8 * s)))                 # дужки
     if lens_box:
         d.line([P(lens_box[0][2], bridge_y), P(lens_box[1][0], bridge_y)], fill=INK, width=lw)   # перемычка
         for k in (-1, 1):
             d.line([P(k * lens_box[1][2], arm_y), P(k * 222, arm_y - 30)], fill=INK, width=lw)    # дужки
     # брови: левая ровная, правая поднята — «самодовольный» взгляд
-    by = -40 if glasses == "down" else (5 if glasses == "none" else 0)
+    by = -40 if glasses == "down" else (5 if glasses == "none" else (-28 if glasses == "clear" else 0))
     W.line(d, P(-165, -102 + by), P(-40, -92 + by), max(5, int(12 * s)), seed=219)
     d.line([P(40, -112 + by), P(110, -158 + by), P(175, -132 + by)], fill=INK, width=max(5, int(12 * s)), joint="curve")
 
