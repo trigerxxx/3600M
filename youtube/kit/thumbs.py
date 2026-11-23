@@ -116,7 +116,7 @@ def wolf_portrait(d, cx, cy, s=1.0, lens=True, mood="smirk", glasses="on"):
     P = lambda x, y: (cx + x * s, cy + y * s)
     lw = max(4, int(9 * s))
     # плечи и пиджак
-    sh(d, [P(-360, 640), P(-350, 330), P(-260, 250), P(-90, 225), P(90, 225), P(260, 250), P(350, 330), P(360, 640)], SUIT, lw, seed=201)
+    sh(d, [P(-440, 1000), P(-360, 330), P(-260, 250), P(-90, 225), P(90, 225), P(260, 250), P(360, 330), P(440, 1000)], SUIT, lw, seed=201)   # пиджак уходит за низ кадра
     d.polygon([P(-95, 228), P(95, 228), P(0, 470)], fill=(250, 250, 250), outline=INK)
     sh(d, [P(-30, 250), P(30, 250), P(42, 430), P(0, 480), P(-42, 430)], TIE, lw, seed=202)
     sh(d, [P(-34, 232), P(34, 232), P(26, 268), P(-26, 268)], TIE, lw, seed=203)
@@ -201,8 +201,8 @@ def wolf_holds_bill(d, cx, cy, s=1.0, text="$100", mood="smirk", glasses="down")
     SLEEVE, CUFF = (62, 76, 124), (245, 245, 245)
     for k in (-1, 1):                                   # рукава (под купюрой): от низа кадра к лапам, светлее пиджака
         px = k * (bw / 2 + 8)
-        W.shape(d, [P(k * 420, 720), P(k * 215, 720), P(px - k * 62, 470), P(px + k * 70, 470)], SLEEVE, lw, seed=240 + k)
-        d.line([P(k * 330, 715), P(px + k * 10, 490)], fill=(88, 104, 160), width=max(3, int(10 * s)))   # блик на рукаве
+        W.shape(d, [P(k * 470, 1000), P(k * 200, 1000), P(px - k * 62, 470), P(px + k * 70, 470)], SLEEVE, lw, seed=240 + k)
+        d.line([P(k * 340, 1000), P(px + k * 10, 490)], fill=(88, 104, 160), width=max(3, int(10 * s)))   # блик на рукаве
         W.shape(d, [P(px - k * 66, 445), P(px + k * 72, 445), P(px + k * 74, 492), P(px - k * 66, 492)], CUFF, lw, seed=246 + k)
     W.shape(d, [(x0, y0), (x0 + bw * s, y0), (x0 + bw * s, y0 + bh * s), (x0, y0 + bh * s)], (196, 222, 176), lw, seed=245)   # купюра
     d.rectangle([x0 + 18 * s, y0 + 16 * s, x0 + (bw - 18) * s, y0 + (bh - 16) * s], outline=(70, 120, 70), width=max(2, int(4 * s)))
