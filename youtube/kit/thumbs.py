@@ -187,3 +187,27 @@ def wolf_portrait(d, cx, cy, s=1.0, lens=True, mood="smirk", glasses="on"):
     by = -40 if glasses == "down" else 0
     W.line(d, P(-165, -102 + by), P(-40, -92 + by), max(5, int(12 * s)), seed=219)
     d.line([P(40, -112 + by), P(110, -158 + by), P(175, -132 + by)], fill=INK, width=max(5, int(12 * s)), joint="curve")
+
+
+def wolf_holds_bill(d, cx, cy, s=1.0, text="$100", mood="smirk", glasses="down"):
+    """Волк анфас держит купюру двумя лапами перед собой (отсылка к «показывает купюру в камеру»)."""
+    import doodle as D
+    wolf_portrait(d, cx, cy, s, mood=mood, glasses=glasses)
+    INK, GREY, SUIT = (17, 17, 17), (128, 132, 140), (34, 44, 74)
+    P = lambda x, y: (cx + x * s, cy + y * s)
+    lw = max(4, int(9 * s))
+    for k in (-1, 1):                                   # предплечья от боков к купюре
+        W.shape(d, [P(k * 330, 640), P(k * 250, 640), P(k * 175, 420), P(k * 235, 395)], SUIT, lw, seed=240 + k)
+    bw, bh = 470, 210
+    x0, y0 = cx - bw / 2 * s, cy + 290 * s
+    W.shape(d, [(x0, y0), (x0 + bw * s, y0), (x0 + bw * s, y0 + bh * s), (x0, y0 + bh * s)], (196, 222, 176), lw, seed=245)   # купюра
+    d.rectangle([x0 + 18 * s, y0 + 16 * s, x0 + (bw - 18) * s, y0 + (bh - 16) * s], outline=(70, 120, 70), width=max(2, int(4 * s)))
+    d.ellipse([cx - 52 * s, y0 + 40 * s, cx + 52 * s, y0 + (bh - 40) * s], fill=(160, 196, 140), outline=(70, 120, 70), width=max(2, int(4 * s)))
+    W.sheep(d, cx - 38 * s, y0 + 158 * s, 0.28 * s, 1.0, "calm", seed=5)                                                   # «портрет» на купюре — овца
+    f = F(int(62 * s))
+    for xx in (x0 + 118 * s, x0 + (bw - 118) * s):
+        d.text((xx, y0 + bh / 2 * s), text, font=F(int(56 * s)), fill=(40, 90, 50), anchor="mm")
+    for k in (-1, 1):                                   # лапы держат края (поверх купюры, не закрывая цифры)
+        W.shape(d, W.wob(cx + k * (bw / 2 + 8) * s, cy + 400 * s, 40 * s, 58 * s, seed=243 + k), GREY, lw)
+        for j in range(3):
+            d.line([P(k * (bw / 2 - 18), 368 + j * 28), P(k * (bw / 2 + 14), 368 + j * 28)], fill=INK, width=max(2, int(5 * s)))
